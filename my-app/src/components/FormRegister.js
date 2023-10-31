@@ -40,6 +40,17 @@ export default class FormRegister extends Component {
                         secureTextEntry = {true}
                         onChangeText = {(text) => this.setState({password:text}) }
                     />
+
+                    <Text 
+                    style = {styles.textlink}>
+                        Tenes una cuenta?
+                        <TouchableOpacity 
+                        onPress={() => this.props.navigation.navigate('Login')}
+                        >
+                            Logueate aca!
+                        </TouchableOpacity>
+                    </Text>
+
                     <TouchableOpacity 
                     onPress={() => this.registrarUsuario(this.state.name, this.state.email, this.state.password)}
                     style= {styles.btn}>

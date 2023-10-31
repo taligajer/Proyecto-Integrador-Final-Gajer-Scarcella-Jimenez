@@ -12,14 +12,14 @@ export default class Register extends Component {
         console.log(this.props)
         auth.onAuthStateChanged((user) => {
             if(user != null){
-            
+            this.props.navigation.navigate('TabNavigation')
             }})
     }
 
     render(){
         return(
             <View>
-                <FormRegister />
+                <FormRegister navigation = {this.props.navigation} />
             </View>
         )
     }

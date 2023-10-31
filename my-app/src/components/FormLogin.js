@@ -59,7 +59,8 @@ const styles = Stylesheet.create({
     },
     btn: {
         backgroundColor: 'purple',
-        padding: 16
+        padding: 16,
+        marginBottom: 24
     },
     textBn: {
         color: 'white'
