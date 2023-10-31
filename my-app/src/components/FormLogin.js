@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {auth} from '../../firebase/config'
+import {auth} from '../firebase/config'
 
 export default class FormLogin extends Component {
     constructor(props){
