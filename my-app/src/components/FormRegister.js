@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {auth} from '../firebase/config';
+import {auth, db} from '../firebase/config';
 import { TextInput, View, Text, TouchableOpacity, Stylesheet} from 'react-native'
 
 export default class FormRegister extends Component {
@@ -8,9 +8,25 @@ export default class FormRegister extends Component {
         this.state = {
             name: '',
             email:'',
-            password: ''
+            password: '',
+            minibio: ''
         }
     }
+
+    registrarUsuario(name,email, password){
+        auth.createUserWithEmailAndPassword(email, password)
+        .then(user => db.collection('users').add({
+            owner: this.state.email,
+            createdAt: Date.now(),
+            name: this.state.name,
+            minibio: this.state.minibio
+        }))
+        .then((resp) => console.log(resp))
+        .catch(error => {
+            this.setState({error: 'Fallo en el registro'})
+        })
+    }
+
     render(){
         return (
             <View>
@@ -30,6 +46,13 @@ export default class FormRegister extends Component {
                         keyboardType = 'email-adress'
                         value = {this.state.email}
                         onChangeText = {(text) => this.setState({email:text}) }
+                    />
+
+                    <TextInput
+                        style = {styles.input}
+                        placeholder = 'Crea una minibio'
+                        value = {this.state.minibio}
+                        onChangeText = {(text) => this.setState({minibio:text}) }
                     />
 
                     <TextInput
@@ -62,17 +85,6 @@ export default class FormRegister extends Component {
         
         
         ) }
-
-
-    registrarUsuario(name,email, password){
-        auth.createUserWithEmailAndPassword(email, password)
-        .then(response => {
-            this.setState({registered: true});
-        })
-        .catch(error => {
-            this.setState({error: 'Fallo en el registro'})
-        })
-        }
 }
 
 const styles = Stylesheet.create({
