@@ -13,12 +13,11 @@ export default class FormLogin extends Component {
 
     loguearUsuario(email, password){
         auth.signInWithEmailAndPassword(email, password)
-        .then(response => {
-            this.setState({loggedIn: true});
+        .then((user)=> {
+            this.props.navigation.navigate('TabNavigation');
         })
-        .catch(error => {
-            this.setState({error: 'Credenciales invalidas'})
-        })
+        .catch(error =>
+            console.log(error))
     }
 
     render(){

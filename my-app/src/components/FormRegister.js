@@ -22,9 +22,8 @@ export default class FormRegister extends Component {
             minibio: this.state.minibio
         }))
         .then((resp) => console.log(resp))
-        .catch(error => {
-            this.setState({error: 'Fallo en el registro'})
-        })
+        .catch(error => 
+            console.log(error))
     }
 
     render(){
