@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {auth} from '../firebase/config'
+import { TextInput, View, Text, TouchableOpacity, StyleSheet} from 'react-native'
 
 export default class FormLogin extends Component {
     constructor(props){
@@ -9,7 +10,7 @@ export default class FormLogin extends Component {
             password: ''
         }
     }
-    
+
     loguearUsuario(email, password){
         auth.signInWithEmailAndPassword(email, password)
         .then(response => {
@@ -52,7 +53,7 @@ export default class FormLogin extends Component {
 
 }
 
-const styles = Stylesheet.create({
+const styles = StyleSheet.create({
     input: {
         borderWidth: 1,
         borderColor: 'green',

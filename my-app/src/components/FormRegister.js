@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {auth, db} from '../firebase/config';
-import { TextInput, View, Text, TouchableOpacity, Stylesheet} from 'react-native'
+import { TextInput, View, Text, TouchableOpacity, StyleSheet} from 'react-native'
 
 export default class FormRegister extends Component {
     constructor(props){
@@ -85,9 +85,10 @@ export default class FormRegister extends Component {
         
         
         ) }
+
 }
 
-const styles = Stylesheet.create({
+const styles = StyleSheet.create({
     input: {
         borderWidth: 1,
         borderColor: 'green',

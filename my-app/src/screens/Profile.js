@@ -1,4 +1,4 @@
-import {Text, View, TouchableOpacity, Stylesheet} from 'react-native'
+import {Text, View, TouchableOpacity, StyleSheet} from 'react-native'
 import React, {Component} from 'react'
 import {auth} from '../firebase/config'
 
@@ -29,7 +29,7 @@ export default class Profile extends Component {
     }
 }
 
-const styles = Stylesheet.create({
+const styles = StyleSheet.create({
     signoutBtn: {
         backgroundColor: 'red',
         padding: 16

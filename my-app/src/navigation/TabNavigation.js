@@ -1,5 +1,5 @@
 import {NavigationContainer} from '@react-navigation/native'
-import {createBottomTabNavigator} from '@react-navigation/native-stack'
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import Home from '../screens/Home'
 import Profile from '../screens/Profile'
 import Search from '../screens/Search'
