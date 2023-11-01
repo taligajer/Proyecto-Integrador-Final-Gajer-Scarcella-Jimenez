@@ -5,7 +5,7 @@ import Profile from '../screens/Profile'
 import Search from '../screens/Search'
 import NewPost from '../screens/NewPost'
 
-const Tab = createBottomTabNavigator
+const Tab = createBottomTabNavigator();
 
 export default function TabNavigaton(){
     return(
