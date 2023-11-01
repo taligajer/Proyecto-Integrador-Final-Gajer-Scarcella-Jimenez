@@ -9,6 +9,17 @@ export default class FormLogin extends Component {
             password: ''
         }
     }
+    
+    loguearUsuario(email, password){
+        auth.signInWithEmailAndPassword(email, password)
+        .then(response => {
+            this.setState({loggedIn: true});
+        })
+        .catch(error => {
+            this.setState({error: 'Credenciales invalidas'})
+        })
+    }
+
     render(){
         return (
             <View>
@@ -38,15 +49,6 @@ export default class FormLogin extends Component {
             </View>
         )}
 
-    loguearUsuario(email, password){
-        auth.signInWithEmailAndPassword(email, password)
-        .then(response => {
-            this.setState({loggedIn: true});
-        })
-        .catch(error => {
-            this.setState({error: 'Credenciales invalidas'})
-        })
-    }
 
 }
 
