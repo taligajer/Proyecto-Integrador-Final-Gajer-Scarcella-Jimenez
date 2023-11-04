@@ -8,9 +8,9 @@ export default class Post extends Component {
 
     render(){
         return(
-            <Text>
-                Post
-            </Text>
+            <View>
+                <Text>{this.props.data.descripcion}</Text>
+            </View>
         )
     }
 }

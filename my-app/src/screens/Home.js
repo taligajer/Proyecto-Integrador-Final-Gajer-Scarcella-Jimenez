@@ -1,6 +1,6 @@
 import { TextInput, FlatList, View, Text, TouchableOpacity, StyleSheet} from 'react-native'
 import React, {Component} from 'react'
-import {auth} from '../firebase/config'
+import {auth, db} from '../firebase/config'
 import Post from '../components/Post'
 
 export default class Home extends Component {
@@ -9,6 +9,21 @@ export default class Home extends Component {
         this.state={
             posteos: []
         }
+    }
+
+    componentDidMount(){
+        db.collection('posts').onSnapshot(docs => {
+            let arrPosteos = []
+            docs.forEach(doc => {
+                arrPosteos.push({
+                    id: doc.id,
+                    data: doc.data()
+                })
+            })
+        this.setState({
+            posteos: arrPosteos
+        })
+        })
     }
 
     render(){
