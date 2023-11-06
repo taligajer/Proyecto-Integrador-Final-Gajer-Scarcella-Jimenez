@@ -9,6 +9,8 @@ export default class Post extends Component {
     render(){
         return(
             <View>
+
+                {console.log(this.props.data)}
                 <Text>{this.props.data.descripcion}</Text>
             </View>
         )
