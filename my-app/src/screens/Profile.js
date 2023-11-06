@@ -12,6 +12,7 @@ export default class Profile extends Component {
     }
 
     componentDidMount(){
+        console.log(arrDocs);
         db.collection('users').onSnapshot((docs) => { //empaqueta todos los documentos que tenga ahi
             let arrDocs = []
             docs.forEach((doc) => {

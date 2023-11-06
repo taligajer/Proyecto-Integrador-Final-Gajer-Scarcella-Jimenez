@@ -18,20 +18,10 @@ export default class FormDescripcionPost extends Component {
         <View>
             <TextInput
             placeholder='Añadi la descripcion'
-            onChangeText={(text) => this.setState({
-                descripcionPost: text
-            })}
-            value= {this.state.descripcionPost}
+            onChangeText={(descripcion) => this.props.actualizarDescripcion(descripcion)}
+            value= {this.props.estadoDescripcion}
             style={styles.input}
             />
-            <TouchableOpacity
-                style={styles.btn}
-                onPress={() => this.props.onSubmit({ descripcion: this.state.descripcionPost})}
-            >
-                <Text>
-                    Enviar
-                </Text>
-            </TouchableOpacity>
         </View>
      </View>
     
