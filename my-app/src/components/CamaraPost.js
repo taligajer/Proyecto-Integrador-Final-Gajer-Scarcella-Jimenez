@@ -1,7 +1,7 @@
 import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native'
 import React, { Component } from 'react'
 import { Camera } from 'expo-camera'
-import { Storage } 
+import { storage } from '../firebase/config'
 
 export default class CamaraPost extends Component {
     constructor(props){
@@ -15,7 +15,7 @@ export default class CamaraPost extends Component {
     }
 
     componentDidMount(){
-        Camera.requestCameraPermissionAsync()
+        Camera.requestCameraPermissionsAsync()
         .then((resp) => this.setState({
             permisos: true
         }))
@@ -33,7 +33,8 @@ export default class CamaraPost extends Component {
 
     rechazarFoto(){
         this.setState({
-            mostrarCamara
+            mostrarCamara: true,
+            urlTemp: ''
         })
     }
 
@@ -41,7 +42,7 @@ export default class CamaraPost extends Component {
         fetch(this.state.urlTemp)
         .then(resp => resp.blob()) //binary large object
         .then(img => {
-            const ref = Storage.ref(`fotos/${Date.now()}.jpg`)
+            const ref = storage.ref(`fotos/${Date.now()}.jpg`)
             ref.put(img)
             .then(resp => {
                 ref.getDownloadURL()
@@ -60,26 +61,44 @@ export default class CamaraPost extends Component {
             <>
   
         <Camera
-        style= {styles.camara}
-        type={Camera.Constants.Type.back}
-        ref={metodosDeCamara => this.metodosDeCamara = metodosDeCamara} //especie de queryselector que usa react, accede a los metodos interno
+            style= {styles.camara}
+            type={Camera.Constants.Type.back}
+            ref={(metodosDeCamara) => this.metodosDeCamara = metodosDeCamara} //especie de queryselector que usa react, accede a los metodos interno
         />
+
         <TouchableOpacity
         onPress={() => this.tomarFoto()}
         >
-        <Text> Tomar foto</Text>
+            <Text> Tomar foto</Text>
         </TouchableOpacity>
         </>
+
         : this.state.permisos && this.state.mostrarCamara === false ?
-        <Text>No tienes permiso para usar la camara</Text>
+ 
         <>
         <Image 
             source={{uri: this.state.urlTemp}}
             style = {styles.img}
             reasizeMode={'contain'}
         />
+        <TouchableOpacity
+        onPress={() => this.aceptarFoto()}
+        >
+            <Text> Aceptar foto </Text>
+
+        </TouchableOpacity>
+        <TouchableOpacity
+        onPress={() => this.rechazarFoto()}
+        >
+            <Text> Rechazar Foto </Text>
+
+        </TouchableOpacity>
+        </>
+        :
+        <Text> No tienes permisos para usar la camara </Text>
 
         }
+
       </View>
     )
   }

@@ -1,4 +1,4 @@
-import {Text, View, TouchableOpacity} from 'react-native'
+import {Text, View, TouchableOpacity, StyleSheet} from 'react-native'
 import React, {Component} from 'react'
 import {auth, db} from '../firebase/config'
 import FormDescripcionPost from '../components/FormDescripcionPost'
@@ -41,19 +41,28 @@ export default class NewPost extends Component {
 
     render(){
         return(
-            <View style = {StyleSheet.container} >
+            <View style = {styles.container} >
             <Text>
                 New Post
             </Text>
             {
                 this.state.paso1 ?
                 <CamaraPost
-                actualizarFotourl={(url) => this.actualizarFotourl(url)}
+                    actualizarFotourl={(url) => this.actualizarFotourl(url)}
                 />
                 : 
                 <>
-                <TouchableOpacity
-                onPress={() => this.props.onSubmit({ descripcion: this.state.descripcion})}
+            <FormDescripcionPost
+                onSubmit={(obj) => this.onSubmit(obj)} 
+                actualizarDescripcion={(descripcion) => this.actualizarDescripcion(descripcion)}
+                estadoDescripcion = {this.state.descripcion}
+            />
+
+            <TouchableOpacity
+                onPress={() => this.onSubmit({ 
+                    descripcion: this.state.descripcion,
+                    fotoUrl: this.state.urlFoto
+                })}
             >
                 <Text>
                     Enviar
@@ -61,16 +70,13 @@ export default class NewPost extends Component {
             </TouchableOpacity>
             </>
             }
-            <FormDescripcionPost
-            //onSubmit={(obj) => this.onSubmit(obj)} 
-            actualizarDescripcion={(descripcion) => this.actualizarDescripcion(descripcion)}
-            estadoDescripcion = {this.state.descripcion}
-            />
             </View>
         )
     }
 }
 
 const styles= StyleSheet.create({
-
+    container: {
+        flex: 1
+    }
 })
