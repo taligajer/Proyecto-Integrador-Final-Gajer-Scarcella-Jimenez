@@ -14,6 +14,15 @@ export default class FormRegister extends Component {
     }
 
     registrarUsuario(name,email, password){
+        if(email == ''){
+            alert('El campo email es obligatorio')
+        }
+        if(password == ''){
+            alert('El campo password es obligatorio')
+        }
+        if(name == ''){
+            alert('El campo name es obligatorio')
+        }
         auth.createUserWithEmailAndPassword(email, password)
         .then(user => db.collection('users').add({
             owner: this.state.email,

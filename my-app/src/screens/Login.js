@@ -13,7 +13,7 @@ export default class Login extends Component {
         auth.onAuthStateChanged((user) => {
             if(user != null){
             this.props.navigation.navigate('TabNavigation')
-            }})
+            }}) 
     }
     
 
