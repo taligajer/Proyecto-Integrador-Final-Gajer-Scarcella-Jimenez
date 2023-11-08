@@ -9,7 +9,7 @@ export default class Post extends Component {
     render(){
         return(
             <View>
-                <Image source= {{uri: this.props.data.fotoUrl ? this.props.data.fotoUrl: ''}}/>
+                <Image style={styles.fotoUrl} source= {{uri: this.props.data.fotoUrl ? this.props.data.fotoUrl: ''}}/>
                 {console.log(this.props.data)}
                 <Text>{this.props.data.descripcion}</Text>
             </View>
@@ -18,5 +18,13 @@ export default class Post extends Component {
 }
 
 const styles = StyleSheet.create({
+    fotoUrl:{
+        height:400,
+        width:400,
+        border: '2px solid #ddd',
+        padding: 5,
+        borderRadius:4,
+        alignItems: 'center'
+    }
     
 })
