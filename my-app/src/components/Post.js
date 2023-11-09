@@ -1,10 +1,54 @@
 import {Text, View, TouchableOpacity, StyleSheet, Image} from 'react-native'
+import {FontAwesome} from '@expo/vector-icons'
 import React, {Component} from 'react'
+import { db, auth } from '../firebase/config';
+import firebase from 'firebase';
 
 export default class Post extends Component {
     constructor(props){
         super(props)
+        this.state={
+            likes:0,
+            estaMiLike:false
+        }
     }
+//falta setear la propiedad likes en el resto de las publicaciones para que funcione
+    /*componentDidMount(){ //validamos si esta mi like
+        console.log(this.props.data)
+        let validacionLike = this.props.data.likes.includes(auth.currentUser.email) //buscamos el usuario logueado con include --> devuelve true o false
+        this.setState({
+            estaMiLike: validacionLike
+        })
+    }*/
+
+    like(){
+        db
+        .collection('posts')
+        .doc(this.props.id)
+        .update({
+            likes: firebase.firestore.FieldValue.arrayUnion(auth.currentUser.email)
+        })
+        .then((resp) =>{
+            this.setState({
+                estaMiLike:true
+            })
+        })
+        .catch((err) => console.log(err))}
+    
+        unlike(){
+            db
+            .collection('posts')
+            .doc(this.props.id)
+            .update({
+                likes: firebase.firestore.FieldValue.arrayRemove(auth.currentUser.email) //remove porque saca el like
+            })
+            .then((resp) =>{
+                this.setState({
+                    estaMiLike:false
+                })
+            })
+            .catch((err) => console.log(err))
+        }
 
     render(){
         return(
@@ -12,6 +56,19 @@ export default class Post extends Component {
                 <Image style={styles.fotoUrl} source= {{uri: this.props.data.fotoUrl ? this.props.data.fotoUrl: ''}}/>
                 {console.log(this.props.data)}
                 <Text>{this.props.data.descripcion}</Text>
+                <View>
+                    {
+                        this.state.estaMiLike ?
+                    <TouchableOpacity onPress={()=> this.unlike()}>
+                    <FontAwesome name='heart' color='red' size={25}/>
+                    </TouchableOpacity>
+                    :
+                    <TouchableOpacity onPress={()=> this.like()}>
+                    <FontAwesome name='heart-o' color='red' size={25}/>
+                    </TouchableOpacity>
+                    }
+                </View>
+                
             </View>
         )
     }

@@ -20,7 +20,8 @@ export default class NewPost extends Component {
             owner: auth.currentUser.email,
             createdAt: Date.now(),
             descripcion: descripcion,
-            fotoUrl: fotoUrl
+            fotoUrl: fotoUrl,
+            likes:[]
         })
         .then(()=> this.props.navigation.navigate('Home'))
         .catch((e) => console.log(e))

@@ -47,6 +47,7 @@ export default class Profile extends Component {
                     />
                 <View>
                     <TouchableOpacity
+                    style={signOutBtn}
                     onPress={() => this.logout()}
                     >
                         <Text>Cerrar sesion</Text>
