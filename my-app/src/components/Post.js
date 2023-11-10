@@ -12,14 +12,14 @@ export default class Post extends Component {
             estaMiLike:false
         }
     }
-//falta setear la propiedad likes en el resto de las publicaciones para que funcione
-    /*componentDidMount(){ //validamos si esta mi like
+
+    componentDidMount(){ //validamos si esta mi like
         console.log(this.props.data)
         let validacionLike = this.props.data.likes.includes(auth.currentUser.email) //buscamos el usuario logueado con include --> devuelve true o false
         this.setState({
             estaMiLike: validacionLike
         })
-    }*/
+    }
 
     like(){
         db
@@ -52,11 +52,12 @@ export default class Post extends Component {
 
     render(){
         return(
-            <View>
+            <View style={styles.container}>
                 <Image style={styles.fotoUrl} source= {{uri: this.props.data.fotoUrl ? this.props.data.fotoUrl: ''}}/>
                 {console.log(this.props.data)}
                 <Text>{this.props.data.descripcion}</Text>
-                <View>
+                <View style={styles.containerChico}>
+                    <Text>{this.props.data.likes.length}</Text>
                     {
                         this.state.estaMiLike ?
                     <TouchableOpacity onPress={()=> this.unlike()}>
@@ -81,7 +82,17 @@ const styles = StyleSheet.create({
         border: '2px solid #ddd',
         padding: 5,
         borderRadius:4,
-        alignItems: 'center'
+        alignItems: 'center',
+        margin: '10px' 
+    },
+    container:{
+        flex:2,
+        alignContent: 'centrer',
+        backgroundColor:'white',
+        margin: '30px'
+    },
+    containerChico:{
+        flex:1
     }
     
 })
