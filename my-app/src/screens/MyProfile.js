@@ -1,19 +1,21 @@
 import {Text, View, TouchableOpacity, StyleSheet, FlatList} from 'react-native'
 import React, {Component} from 'react'
 import {auth, db} from '../firebase/config'
+import Post from '../components/Post'
 
-export default class Profile extends Component {
+export default class MyProfile extends Component {
     constructor(props){
         super(props)
         this.state = {
-            usuarios: []
+            usuarios: [],
+            posts: []
 
         }
     }
 
     componentDidMount(){
         console.log(arrDocs);
-        db.collection('users').onSnapshot((docs) => { //empaqueta todos los documentos que tenga ahi
+        db.collection('users').where('owner', '==', auth.currentUser.email).onSnapshot((docs) => { //empaqueta todos los documentos que tenga ahi
             let arrDocs = []
             docs.forEach((doc) => {
                 arrDocs.push({
@@ -23,9 +25,11 @@ export default class Profile extends Component {
             })
             this.setState({
                 usuarios: arrDocs
-            })
+            }, () => console.log(this.state.usuarios))
+            
         })
     }
+    
     
     logout(){
         auth.signOut()

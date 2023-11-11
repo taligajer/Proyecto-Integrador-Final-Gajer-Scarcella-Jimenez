@@ -74,6 +74,7 @@ export default class Post extends Component {
                     }
                 </View>
                 <View>
+                
                     <TouchableOpacity
                     onPress ={()=> this.irAComentar()}
                     >

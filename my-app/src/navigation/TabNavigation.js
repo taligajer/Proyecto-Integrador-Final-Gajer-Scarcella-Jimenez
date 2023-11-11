@@ -1,7 +1,7 @@
 import {NavigationContainer} from '@react-navigation/native'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import Home from '../screens/Home'
-import Profile from '../screens/Profile'
+import Profile from '../screens/MyProfile'
 import Search from '../screens/Search'
 import NewPost from '../screens/NewPost'
 

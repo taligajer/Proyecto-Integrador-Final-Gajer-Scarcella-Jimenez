@@ -24,18 +24,19 @@ export default class Comments extends Component {
             <View>
             <Text>Comments</Text>
             {
-                this.state.dataPost !== null ?
+            this.state.dataPost !== null ?
+           
                 <FlatList
-                data = {this.state.dataPost.comentarios}
-                keyExtractor = {(item) => item.createdAt.toString()}
-                renderItem = {(item) => <View>
-                    <Text>{item.owner}</Text>
-                    <Text>{item.comentario}</Text>
-                </View>}
-                />
-                :
-                ""
-            }
+                    data={this.state.dataPost.comentarios}
+                    keyExtractor = {(item)=> item.createdAt.toString()}
+                    renderItem={({item})=> <View>
+                        <Text>{item.owner}</Text>
+                        <Text>{item.comentario}</Text>
+                    </View> }/>
+                     
+                     :
+                     ''
+        }
            
             < FormComentarios 
             postId = {this.props.route.params.id}
