@@ -26,7 +26,7 @@ render() {
     return (
       <View>
         <TextInput
-            placeholder='Comenta aca'
+            placeholder='Agrega tu comentario...'
             keyboardType='default'
             onChangeText={(text)=> this.setState({comentario: text})}
             value={this.state.comentario}
@@ -34,7 +34,7 @@ render() {
             numberOfLines={4}
             style={styles.input}
         />
-        <TouchableOpacity
+        <TouchableOpacity //agregar icono para que quede mas pro
             onPress={()=> this.enviarComentario(this.state.comentario)}
         >
             <Text>

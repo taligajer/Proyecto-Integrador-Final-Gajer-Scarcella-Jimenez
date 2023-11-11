@@ -50,6 +50,10 @@ export default class Post extends Component {
             .catch((err) => console.log(err))
         }
 
+        irAComentar(){
+            this.props.navigation.navigate('Comments', {id: this.props.id})
+
+        }
     render(){
         return(
             <View style={styles.container}>
@@ -68,6 +72,13 @@ export default class Post extends Component {
                     <FontAwesome name='heart-o' color='red' size={25}/>
                     </TouchableOpacity>
                     }
+                </View>
+                <View>
+                    <TouchableOpacity
+                    onPress ={()=> this.irAComentar()}
+                    >
+                        <Text>Comentar</Text>
+                    </TouchableOpacity>
                 </View>
                 
             </View>

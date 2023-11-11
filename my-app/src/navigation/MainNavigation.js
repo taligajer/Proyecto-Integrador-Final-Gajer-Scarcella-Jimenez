@@ -36,6 +36,7 @@ export default function MainNavigaton(){
                 <Stack.Screen
                 name= 'Comments'
                 component={Comments} 
+                
                 />
             </Stack.Navigator>
         </NavigationContainer>
