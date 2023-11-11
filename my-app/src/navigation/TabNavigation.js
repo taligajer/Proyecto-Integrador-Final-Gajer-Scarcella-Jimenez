@@ -1,5 +1,6 @@
 import {NavigationContainer} from '@react-navigation/native'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
+import { FontAwesome5 } from '@expo/vector-icons';
 import Home from '../screens/Home'
 import Profile from '../screens/MyProfile'
 import Search from '../screens/Search'
@@ -14,28 +15,34 @@ export default function TabNavigaton(){
             name='Home'
             component={Home}
             options={{
-                headerShown: false
+                headerShown: false,
+                tabBarIcon: ()=> <FontAwesome5 name='home' size={20} color='pink' />
+                
             }}
             />
             <Tab.Screen
             name='Profile'
             component={Profile}
             options={{
-                headerShown: false
+                headerShown: false,
+                tabBarIcon: () => <FontAwesome5 name='user' size={20} color='pink' />
+
             }}
             />
             <Tab.Screen
             name='Search'
             component={Search}
             options={{
-                headerShown: false
+                headerShown: false,
+                tabBarIcon: () => <FontAwesome5 name='search' size={20} color='pink' />
             }}
             />
             <Tab.Screen
             name='NewPost'
             component={NewPost}
             options={{
-                headerShown: false
+                headerShown: false,
+                tabBarIcon: () => <FontAwesome5 name='camera' size={20} color='pink' />
             }}
             />
         </Tab.Navigator>

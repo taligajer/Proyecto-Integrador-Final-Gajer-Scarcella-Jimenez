@@ -25,6 +25,7 @@ export default class Comments extends Component {
             <Text>Comments</Text>
             {
             this.state.dataPost !== null ?
+            
            
                 <FlatList
                     data={this.state.dataPost.comentarios}

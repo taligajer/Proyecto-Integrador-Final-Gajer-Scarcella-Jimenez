@@ -74,7 +74,7 @@ export default class Post extends Component {
                     }
                 </View>
                 <View>
-                
+                <Text>{this.props.data.comentarios.length} comentarios </Text>
                     <TouchableOpacity
                     onPress ={()=> this.irAComentar()}
                     >
