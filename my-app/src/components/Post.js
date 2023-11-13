@@ -58,7 +58,7 @@ export default class Post extends Component {
         return(
             <View style={styles.container}>
                 <Image style={styles.fotoUrl} source= {{uri: this.props.data.fotoUrl ? this.props.data.fotoUrl: ''}}/>
-                {console.log(this.props.data)}
+                {/* {console.log(this.props.data)} */}
                 <Text>{this.props.data.descripcion}</Text>
                 <View style={styles.containerChico}>
                     <Text>{this.props.data.likes.length} likes </Text>
@@ -78,7 +78,7 @@ export default class Post extends Component {
                     <TouchableOpacity
                     onPress ={()=> this.irAComentar()}
                     >
-                       <FontAwesome name='comment'  size={25}/>
+                       <FontAwesome name='comment-o' size={25}/>
                     </TouchableOpacity>
                 </View>
                 

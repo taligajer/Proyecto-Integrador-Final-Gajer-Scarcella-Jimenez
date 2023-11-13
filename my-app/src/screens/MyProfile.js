@@ -7,7 +7,7 @@ export default class MyProfile extends Component {
     constructor(props){
         super(props)
         this.state = {
-            usuarios: [],
+            usuario: [],
             posts: []
 
         }
@@ -21,15 +21,25 @@ export default class MyProfile extends Component {
                     id: doc.id,
                     data: doc.data()
                 })
-            })
+            });
             console.log(arrDocs);
             this.setState({
                 posts: arrDocs
-            }, () => console.log(this.state.posts))
-            
-        })
-
-
+            }, () => console.log(this.state.posts));
+        });
+        db.collection('users').where('owner', '==', auth.currentUser.email).onSnapshot((docs) => { //empaqueta todos los documentos que tenga ahi
+            let arrDocs = []
+            docs.forEach((doc) => {
+                arrDocs.push({
+                    id: doc.id,
+                    data: doc.data()
+                })
+            });
+            console.log(arrDocs);
+            this.setState({
+                usuario: arrDocs
+            });
+        });
     }
     
     
@@ -41,8 +51,15 @@ export default class MyProfile extends Component {
     render(){
         return(
             <View style={styles.containerGral}>
+                {this.state.usuario.length > 0?
+                <Text> 
+                    Mail: {this.state.usuario[0].data.owner}
+                    Name: {this.state.usuario[0].data.name}
+                    Minibio: {this.state.usuario[0].data.minibio}
+                </Text>
                 
-                <Text> Mail: {auth.currentUser.email}</Text>
+                :false}
+    
                 <FlatList
                     data={this.state.posts}
                     keyExtractor={(item)=> item.id.toString()}

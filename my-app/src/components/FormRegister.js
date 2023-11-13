@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {auth, db} from '../firebase/config';
-import { TextInput, View, Text, TouchableOpacity, StyleSheet} from 'react-native'
+import { TextInput, View, Text, TouchableOpacity, StyleSheet, ScrollView} from 'react-native'
 
 export default class FormRegister extends Component {
     constructor(props){
@@ -114,6 +114,12 @@ export default class FormRegister extends Component {
 }
 
 const styles = StyleSheet.create({
+    containergral:{
+        flex:1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 10
+    },
     container:{
         width: 500,
         maxWidth: 1000,

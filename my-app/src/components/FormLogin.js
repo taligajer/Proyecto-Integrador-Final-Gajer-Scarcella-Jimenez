@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {auth} from '../firebase/config'
-import { TextInput, View, Text, TouchableOpacity, StyleSheet} from 'react-native'
+import { TextInput, View, Text, TouchableOpacity, StyleSheet, ScrollView} from 'react-native'
 
 export default class FormLogin extends Component {
     constructor(props){
@@ -22,6 +22,7 @@ export default class FormLogin extends Component {
 
     render(){
         return (
+            
             <View style={styles.container}>
                 <Text style={styles.titulo}>Logueate en mi App</Text>
                 <View>
