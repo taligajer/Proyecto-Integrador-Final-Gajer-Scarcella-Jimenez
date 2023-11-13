@@ -61,7 +61,7 @@ export default class Post extends Component {
                 {console.log(this.props.data)}
                 <Text>{this.props.data.descripcion}</Text>
                 <View style={styles.containerChico}>
-                    <Text>{this.props.data.likes.length}</Text>
+                    <Text>{this.props.data.likes.length} likes </Text>
                     {
                         this.state.estaMiLike ?
                     <TouchableOpacity onPress={()=> this.unlike()}>
@@ -78,7 +78,7 @@ export default class Post extends Component {
                     <TouchableOpacity
                     onPress ={()=> this.irAComentar()}
                     >
-                        <Text>Comentar</Text>
+                       <FontAwesome name='comment'  size={25}/>
                     </TouchableOpacity>
                 </View>
                 

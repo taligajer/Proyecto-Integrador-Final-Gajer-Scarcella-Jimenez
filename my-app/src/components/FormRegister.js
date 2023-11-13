@@ -18,13 +18,13 @@ export default class FormRegister extends Component {
 
     registrarUsuario(name,email, password){
         if(name == ''){
-            this.setState({errorName: true})
+            return this.setState({errorName: true})
         }
         if(email == ''){
-            this.setState({errorEmail: true})
+            return this.setState({errorEmail: true})
         }
         if(password == ''){
-            this.setState({errorPass: true})
+            return this.setState({errorPass: true})
         }
         auth.createUserWithEmailAndPassword(email, password)
         .then(user => db.collection('users').add({
@@ -102,7 +102,7 @@ export default class FormRegister extends Component {
                     <TouchableOpacity 
                     onPress={() => this.registrarUsuario(this.state.name, this.state.email, this.state.password)}
                     style= {styles.btn}>
-                        <Text style= {styles.textBtn}> Registrame </Text>
+                        <Text style= {styles.textBn}> Registrame </Text>
                     </TouchableOpacity>
 
                 </View>

@@ -25,18 +25,19 @@ export default class Comments extends Component {
             <Text>Comments</Text>
             {
             this.state.dataPost !== null ?
-            
-           
-                <FlatList
-                    data={this.state.dataPost.comentarios}
-                    keyExtractor = {(item)=> item.createdAt.toString()}
-                    renderItem={({item})=> <View>
-                        <Text>{item.owner}</Text>
-                        <Text>{item.comentario}</Text>
-                    </View> }/>
-                     
+                this.state.dataPost.comentarios.length > 0 ?
+                    <FlatList
+                        data={this.state.dataPost.comentarios}
+                        keyExtractor = {(item)=> item.createdAt.toString()}
+                        renderItem={({item})=> <View>
+                            <Text>{item.owner}</Text>
+                            <Text>{item.comentario}</Text>
+                        </View> }
+                    />
                      :
-                     ''
+                     <Text> Aun no hay comentarios </Text>
+            :
+            ''
         }
            
             < FormComentarios 

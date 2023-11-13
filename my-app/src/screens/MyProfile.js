@@ -14,8 +14,7 @@ export default class MyProfile extends Component {
     }
 
     componentDidMount(){
-        console.log(arrDocs);
-        db.collection('users').where('owner', '==', auth.currentUser.email).onSnapshot((docs) => { //empaqueta todos los documentos que tenga ahi
+        db.collection('posts').where('owner', '==', auth.currentUser.email).onSnapshot((docs) => { //empaqueta todos los documentos que tenga ahi
             let arrDocs = []
             docs.forEach((doc) => {
                 arrDocs.push({
@@ -23,11 +22,14 @@ export default class MyProfile extends Component {
                     data: doc.data()
                 })
             })
+            console.log(arrDocs);
             this.setState({
-                usuarios: arrDocs
-            }, () => console.log(this.state.usuarios))
+                posts: arrDocs
+            }, () => console.log(this.state.posts))
             
         })
+
+
     }
     
     
@@ -38,20 +40,17 @@ export default class MyProfile extends Component {
 
     render(){
         return(
-            <View>
-                <Text>El email del usuario es:</Text>
-                    <FlatList 
-                        data={this.state.usuarios}
-                        keyExtractor={(item) => item.id.toString()}
-                        renderItem={({item}) => <View>
-                        <Text>{item.data.name} </Text>
-                        <Text>{item.data.minibio}</Text>
-                        </View>
-                        }
-                    />
+            <View style={styles.containerGral}>
+                
+                <Text> Mail: {auth.currentUser.email}</Text>
+                <FlatList
+                    data={this.state.posts}
+                    keyExtractor={(item)=> item.id.toString()}
+                    renderItem={({item})=> <Post navigation={this.props.navigation} data={item.data} id={item.id}/>}
+                />
                 <View>
                     <TouchableOpacity
-                    style={signOutBtn}
+                    style={styles.signOutBtn}
                     onPress={() => this.logout()}
                     >
                         <Text>Cerrar sesion</Text>
@@ -63,7 +62,12 @@ export default class MyProfile extends Component {
 }
 
 const styles = StyleSheet.create({
-    signoutBtn: {
+    containerGral:{
+        flex:1,
+        alignItems: 'center',
+        backgroundColor:'pink'
+    },
+    signOutBtn: {
         backgroundColor: 'red',
         padding: 16
     }

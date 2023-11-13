@@ -7,7 +7,7 @@ export default class FormLogin extends Component {
         super(props)
         this.state = {
             email: '',
-            password: ''
+            password: '', 
         }
     }
 
@@ -44,7 +44,7 @@ export default class FormLogin extends Component {
                 <TouchableOpacity
                     onPress={() => this.loguearUsuario(this.state.email, this.state.password)}
                     style= {styles.btn}>
-                    <Text style= {styles.textBtn}>Iniciar sesion</Text>
+                    <Text style= {styles.textBn}>Iniciar sesion</Text>
                 </TouchableOpacity>
             </View>
         )}
