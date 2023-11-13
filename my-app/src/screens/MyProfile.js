@@ -45,7 +45,7 @@ export default class MyProfile extends Component {
     
     logout(){
         auth.signOut()
-        this.props.navigation.navigate('Register')
+        this.props.navigation.navigate('Login')
     }
 
     render(){
@@ -59,7 +59,7 @@ export default class MyProfile extends Component {
                 </Text>
                 
                 :false}
-    
+                
                 <FlatList
                     data={this.state.posts}
                     keyExtractor={(item)=> item.id.toString()}
