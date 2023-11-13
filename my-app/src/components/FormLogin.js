@@ -23,7 +23,7 @@ export default class FormLogin extends Component {
     render(){
         return (
             <View style={styles.container}>
-                <Text>Logueate en mi App</Text>
+                <Text style={styles.titulo}>Logueate en mi App</Text>
                 <View>
                     <TextInput
                         style = {styles.input} 
@@ -58,6 +58,11 @@ const styles = StyleSheet.create({
         maxWidth: 1000,
         flex: 1,
         padding: 10
+    },
+    titulo:{
+        marginBottom:10,
+        textAlign:'center',
+        fontSize: 20
     },
     input: {
         borderWidth: 1,

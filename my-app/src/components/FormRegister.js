@@ -41,7 +41,7 @@ export default class FormRegister extends Component {
     render(){
         return (
             <View style={styles.container}>
-                <Text>Registrate a mi App</Text>
+                <Text style= {styles.titulo}>Registrate a mi App</Text>
                 <View>
                     {
                         this.state.errorName ?
@@ -91,11 +91,11 @@ export default class FormRegister extends Component {
 
                     <Text 
                     style = {styles.textlink}>
-                        Tenes una cuenta?
+                        Tenes una cuenta? 
                         <TouchableOpacity 
                         onPress={() => this.props.navigation.navigate('Login')}
                         >
-                            Logueate aca!
+                        Logueate aca!
                         </TouchableOpacity>
                     </Text>
 
@@ -119,6 +119,11 @@ const styles = StyleSheet.create({
         maxWidth: 1000,
         flex: 1,
         padding: 10,
+    },
+    titulo:{
+        marginBottom:10,
+        textAlign:'center',
+        fontSize: 20
     },
     input: {
         borderWidth: 1,
