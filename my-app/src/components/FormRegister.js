@@ -9,19 +9,22 @@ export default class FormRegister extends Component {
             name: '',
             email:'',
             password: '',
-            minibio: ''
+            minibio: '',
+            errorEmail: false,
+            errorPass: false,
+            errorName: false
         }
     }
 
     registrarUsuario(name,email, password){
+        if(name == ''){
+            this.setState({errorName: true})
+        }
         if(email == ''){
-            alert('El campo email es obligatorio')
+            this.setState({errorEmail: true})
         }
         if(password == ''){
-            alert('El campo password es obligatorio')
-        }
-        if(name == ''){
-            alert('El campo name es obligatorio')
+            this.setState({errorPass: true})
         }
         auth.createUserWithEmailAndPassword(email, password)
         .then(user => db.collection('users').add({
@@ -40,6 +43,11 @@ export default class FormRegister extends Component {
             <View>
                 <Text>Registrate a mi App</Text>
                 <View>
+                    {
+                        this.state.errorName ?
+                        <Text>Ingresa un nombre valido</Text>
+                        : ''
+                    }
                     <TextInput
                         style = {styles.input} 
                         placeholder = 'Pon tu nombre'
@@ -47,7 +55,12 @@ export default class FormRegister extends Component {
                         value = {this.state.name}
                         onChangeText = {(text) => this.setState({name:text}) }
                     />
+                    {
+                        this.state.errorEmail ?
+                        <Text>Ingresa un email valido</Text>
+                        : ''
 
+                    }
                     <TextInput
                         style = {styles.input} 
                         placeholder = 'Pon tu email'
@@ -62,7 +75,11 @@ export default class FormRegister extends Component {
                         value = {this.state.minibio}
                         onChangeText = {(text) => this.setState({minibio:text}) }
                     />
-
+                    {
+                        this.state.errorPass ?
+                        <Text>Ingresa una contraseña valida</Text>
+                        : ''
+                    }
                     <TextInput
                         style = {styles.input} 
                         placeholder = 'Pon tu password'
