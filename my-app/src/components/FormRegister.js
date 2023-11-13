@@ -40,7 +40,7 @@ export default class FormRegister extends Component {
 
     render(){
         return (
-            <View>
+            <View style={styles.container}>
                 <Text>Registrate a mi App</Text>
                 <View>
                     {
@@ -102,7 +102,7 @@ export default class FormRegister extends Component {
                     <TouchableOpacity 
                     onPress={() => this.registrarUsuario(this.state.name, this.state.email, this.state.password)}
                     style= {styles.btn}>
-                        <Text style= {styles.textBn}> Registrame </Text>
+                        <Text style= {styles.textBtn}> Registrame </Text>
                     </TouchableOpacity>
 
                 </View>
@@ -114,17 +114,28 @@ export default class FormRegister extends Component {
 }
 
 const styles = StyleSheet.create({
+    container:{
+        width: 500,
+        maxWidth: 1000,
+        flex: 1,
+        padding: 10,
+    },
     input: {
         borderWidth: 1,
         borderColor: 'green',
-        marginBottom: 24
+        marginBottom: 24,
+        fontSize: 15,
+        padding: 10
 
     },
     btn: {
         backgroundColor: 'purple',
-        padding: 16
+        padding: 16,
+        alignItems: 'center',
+        marginBottom: 24
     },
     textBn: {
-        color: 'white'
+        color: 'white',
+        fontSize: 15
     }
 })

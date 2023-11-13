@@ -22,7 +22,7 @@ export default class FormLogin extends Component {
 
     render(){
         return (
-            <View>
+            <View style={styles.container}>
                 <Text>Logueate en mi App</Text>
                 <View>
                     <TextInput
@@ -44,7 +44,7 @@ export default class FormLogin extends Component {
                 <TouchableOpacity
                     onPress={() => this.loguearUsuario(this.state.email, this.state.password)}
                     style= {styles.btn}>
-                    <Text>Iniciar sesion</Text>
+                    <Text style= {styles.textBtn}>Iniciar sesion</Text>
                 </TouchableOpacity>
             </View>
         )}
@@ -53,18 +53,28 @@ export default class FormLogin extends Component {
 }
 
 const styles = StyleSheet.create({
+    container:{
+        width: 500,
+        maxWidth: 1000,
+        flex: 1,
+        padding: 10
+    },
     input: {
         borderWidth: 1,
         borderColor: 'green',
-        marginBottom: 24
+        marginBottom: 24,
+        fontSize: 15,
+        padding: 10
 
     },
     btn: {
         backgroundColor: 'purple',
         padding: 16,
+        alignItems: 'center',
         marginBottom: 24
     },
     textBn: {
-        color: 'white'
+        color: 'white',
+        fontSize: 15
     }
 })

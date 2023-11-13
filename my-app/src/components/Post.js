@@ -74,7 +74,7 @@ export default class Post extends Component {
                     }
                 </View>
                 <View>
-                
+                <Text>{this.props.data.comentarios.length} comentarios </Text>
                     <TouchableOpacity
                     onPress ={()=> this.irAComentar()}
                     >
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
         margin: '10px' 
     },
     container:{
-        flex:2,
+        flex:1,
         alignContent: 'centrer',
         backgroundColor:'white',
         margin: '30px'
