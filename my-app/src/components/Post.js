@@ -57,6 +57,7 @@ export default class Post extends Component {
     render(){
         return(
             <View style={styles.container}>
+                <Text>{this.props.data.owner}</Text>
                 <Image style={styles.fotoUrl} source= {{uri: this.props.data.fotoUrl ? this.props.data.fotoUrl: ''}}/>
                 {/* {console.log(this.props.data)} */}
                 <Text>{this.props.data.descripcion}</Text>

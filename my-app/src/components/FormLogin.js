@@ -43,9 +43,13 @@ export default class FormLogin extends Component {
                     />
                 </View>
                 <Text>
-                    Todavia no tenes cuenta? 
+                    Todavia no tenes cuenta?
                     <TouchableOpacity 
-                    onPress={() => this.props.navigation.navigate('Register')}> 
+                    onPress={() => {
+                        console.log('FUNCIONA EL BOTON');
+                        this.props.navigation.navigate('Register')
+
+                        }}> 
                     Registrate aca</TouchableOpacity>
                 </Text>
                 <TouchableOpacity
