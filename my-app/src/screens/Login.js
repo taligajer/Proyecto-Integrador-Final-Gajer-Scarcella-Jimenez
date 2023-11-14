@@ -21,12 +21,7 @@ export default class Login extends Component {
         return(
             <View style = {styles.container}>
                 <FormLogin/>
-                <Text>
-                    Todavia no tenes cuenta? 
-                    <TouchableOpacity 
-                    onPress={() => this.props.navigation.navigate('Register')}> 
-                    Registrate aca</TouchableOpacity>
-                </Text>
+                
             </View>
         )
     }

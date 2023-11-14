@@ -42,6 +42,12 @@ export default class FormLogin extends Component {
                         onChangeText = {(text) => this.setState({password:text}) }
                     />
                 </View>
+                <Text>
+                    Todavia no tenes cuenta? 
+                    <TouchableOpacity 
+                    onPress={() => this.props.navigation.navigate('Register')}> 
+                    Registrate aca</TouchableOpacity>
+                </Text>
                 <TouchableOpacity
                     onPress={() => this.loguearUsuario(this.state.email, this.state.password)}
                     style= {styles.btn}>
