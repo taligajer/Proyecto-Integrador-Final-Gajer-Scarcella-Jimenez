@@ -52,11 +52,17 @@ export default class MyProfile extends Component {
         return(
             <View style={styles.containerGral}>
                 {this.state.usuario.length > 0?
-                <Text> 
-                    Mail: {this.state.usuario[0].data.owner}
-                    Name: {this.state.usuario[0].data.name}
-                    Minibio: {this.state.usuario[0].data.minibio}
-                </Text>
+                <View>
+                    <View>
+                        <Text style={styles.letra}> Mail: {this.state.usuario[0].data.owner}</Text>
+                    </View>
+                    <View>
+                        <Text style={styles.letra}> Name: {this.state.usuario[0].data.name}</Text>
+                    </View>
+                    <View>
+                        <Text style={styles.letra}> Minibio: {this.state.usuario[0].data.minibio}</Text>
+                    </View>
+                </View>
                 
                 :false}
                 
@@ -83,6 +89,11 @@ const styles = StyleSheet.create({
         flex:1,
         alignItems: 'center',
         backgroundColor:'pink'
+    },
+    letra:{
+        color: 'white',
+        fontSize: 20,
+        fontWeight: 'bold'
     },
     signOutBtn: {
         backgroundColor: 'red',
