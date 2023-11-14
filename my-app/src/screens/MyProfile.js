@@ -48,24 +48,32 @@ export default class MyProfile extends Component {
         this.props.navigation.navigate('Login')
     }
 
+    borrarPost(postId) {
+        db.collection('posts').doc(postId).delete();
+      }
+
     render(){
         return(
             <View style={styles.containerGral}>
                 {this.state.usuario.length > 0?
                 <View>
                     <View>
-                        <Text style={styles.letra}> Mail: {this.state.usuario[0].data.owner}</Text>
+                        <Text style={styles.letra}> {this.state.usuario[0].data.owner}</Text>
                     </View>
                     <View>
-                        <Text style={styles.letra}> Name: {this.state.usuario[0].data.name}</Text>
+                        <Text style={styles.letra}> @{this.state.usuario[0].data.name}</Text>
                     </View>
                     <View>
-                        <Text style={styles.letra}> Minibio: {this.state.usuario[0].data.minibio}</Text>
+                        <Text style={styles.letra}> minibio: {this.state.usuario[0].data.minibio}</Text>
                     </View>
+                    
                 </View>
                 
                 :false}
-                
+                <View> 
+                    <Text> Mis posteos </Text>
+                    </View>
+                 
                 <FlatList
                     data={this.state.posts}
                     keyExtractor={(item)=> item.id.toString()}
