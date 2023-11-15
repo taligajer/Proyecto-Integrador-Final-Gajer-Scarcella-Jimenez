@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {auth, db} from '../firebase/config';
 import { TextInput, View, Text, TouchableOpacity, StyleSheet, ScrollView} from 'react-native'
+import MyImage from './MyImage';
 
 export default class FormRegister extends Component {
     constructor(props){
@@ -12,7 +13,10 @@ export default class FormRegister extends Component {
             minibio: '',
             errorEmail: false,
             errorPass: false,
-            errorName: false
+            errorName: false,
+            idDocumentoRegistrado:'',
+            step1: true,
+            fotoDePerfil: ''
         }
     }
 
@@ -33,17 +37,42 @@ export default class FormRegister extends Component {
             name: this.state.name,
             minibio: this.state.minibio,
             fotoPerfil: ''
+        })
+        .then((resp) => this.setState({
+            idDocumentoRegistrado: resp.id,
+            step1: false
         }))
-        .then((resp) => this.props.navigation.navigate('InfoAdicionalUser', {docId: resp.id}))
+        )
+        //.then((resp) => this.props.navigation.navigate('InfoAdicionalUser', {docId: resp.id}))
         .catch(error => 
             console.log(error))
+    }
+    actualizarEstadoFotoDePerfil(url){
+        this.setState({
+            fotoDePerfil:url
+        }, ()=> this.actualizarDocDelUsuario()
+        )
+    }
+
+    actualizarDocDelUsuario(){
+        console.log(this.props);
+        db.collection('users')
+        .doc(this.state.idDocumentoRegistrado)
+        .update({
+            fotoDePerfil: this.state.fotoDePerfil
+        })
+        .then(resp => {
+            this.props.navigation.navigate('TabNavigation') //VER ESTO
+        })
     }
 
     render(){
         return (
             <View style={styles.container}>
                 <Text style= {styles.titulo}>Registrate a mi App</Text>
-                <View>
+                {
+                    this.state.step1 ?
+                    <View>
                     {
                         this.state.errorName ?
                         <Text>Ingresa un nombre valido</Text>
@@ -107,6 +136,12 @@ export default class FormRegister extends Component {
                     </TouchableOpacity>
 
                 </View>
+                : 
+                <View>
+                    <MyImage actualizarEstadoFotoDePerfil={(url)=> this.actualizarEstadoFotoDePerfil(url)} />
+                </View>
+                } 
+                
             </View>
         
         

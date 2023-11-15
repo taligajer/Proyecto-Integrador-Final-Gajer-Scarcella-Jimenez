@@ -1,9 +1,9 @@
-import { Text, View, TouchableOpacity, StyleSheet } from 'react-native'
+import { Text, View, TouchableOpacity, StyleSheet, Image } from 'react-native'
 import React, { Component } from 'react'
 import * as ImagePicker from 'expo-image-picker'
-import { storage } from '../firebase/config'
+import { storage} from '../firebase/config'
 
-export default class Image extends Component {
+export default class MyImage extends Component {
     constructor(props){
         super(props)
         this.state = {
@@ -27,7 +27,7 @@ export default class Image extends Component {
             ref.put(imagen)
             .then(() => {
                 ref.getDownloadURL()
-                .then(url => this.props.actualizarFotoPerfil(url))
+                .then(url => this.props.actualizarEstadoFotoDePerfil(url))
             })
         })
         .catch( err => console.log(err))
@@ -43,6 +43,7 @@ export default class Image extends Component {
     return (
       <View>
         <Text> Carga una foto para tu perfil </Text>
+        
         {
             this.state.imagenCargada !== '' ?
              <> 
@@ -69,8 +70,10 @@ export default class Image extends Component {
                 <Text>Cargar imagen de libreria</Text>
             </TouchableOpacity>
             </>
-        }
-            <ImagePicker/>
+    }
+          {
+            //<ImagePicker/>
+            }
     </View>
          
     )
