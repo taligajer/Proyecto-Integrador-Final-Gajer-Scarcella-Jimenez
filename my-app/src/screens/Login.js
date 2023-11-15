@@ -20,7 +20,7 @@ export default class Login extends Component {
     render(){
         return(
             <View style = {styles.container}>
-                <FormLogin/>
+                <FormLogin navigation = {this.props.navigation}/>
                 
             </View>
         )
