@@ -7,7 +7,8 @@ export default class Comments extends Component {
     constructor(props){
         super(props)
         this.state = {
-            dataPost: null
+            dataPost: null,
+            haycoments: false
         }
     }
      componentDidMount(){
@@ -15,7 +16,16 @@ export default class Comments extends Component {
         .collection("posts")
         .doc(this.props.route.params.id)
         .onSnapshot((doc)=> {
-            this.setState({dataPost: doc.data()})
+            this.setState({dataPost: doc.data()},
+            () => {
+                if (this.state.dataPost.comentarios.length > 0) {
+                    this.setState({
+                        haycoments: true,
+                        comentarios: this.state.dataPost.comentarios.reverse(),
+                    })
+                }
+            }
+            )
 
         })
      }
