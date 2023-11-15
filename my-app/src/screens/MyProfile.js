@@ -77,7 +77,16 @@ export default class MyProfile extends Component {
                 <FlatList
                     data={this.state.posts}
                     keyExtractor={(item)=> item.id.toString()}
-                    renderItem={({item})=> <Post navigation={this.props.navigation} data={item.data} id={item.id}/>}
+                    renderItem={({item})=> ( <> 
+                    <Post navigation={this.props.navigation} data={item.data} id={item.id}/>
+                    <TouchableOpacity
+                    style={styles.deleteBtn}
+                    onPress={() => this.borrarPosteo(item.id)}>
+                    <Text style={styles.btnText}>Borrar posteo</Text>
+                  </TouchableOpacity>
+                    </>
+                    )}
+                    
                 />
                 <View>
                     <TouchableOpacity
@@ -106,5 +115,11 @@ const styles = StyleSheet.create({
     signOutBtn: {
         backgroundColor: 'red',
         padding: 16
-    }
+    },
+    deleteBtn: {
+        backgroundColor: 'lightcoral',
+        padding: 10,
+        borderRadius: 10,
+        marginBottom: 10,
+      }
 })
