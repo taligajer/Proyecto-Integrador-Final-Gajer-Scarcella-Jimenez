@@ -3,7 +3,6 @@ import { StyleSheet, Text, View } from 'react-native';
 import MainNavigaton from './src/navigation/MainNavigation';
 import Register from './src/screens/Register';
 import Login from './src/screens/Login';
-import InfoAdicionalUser from './src/screens/infoAdicionalUser';
 
 export default function App() {
   return (
