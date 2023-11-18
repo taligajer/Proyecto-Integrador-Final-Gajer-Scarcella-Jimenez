@@ -54,10 +54,17 @@ export default class Post extends Component {
             this.props.navigation.navigate('Comments', {id: this.props.id})
 
         }
+        irAlPerfil() {
+            this.props.data.owner == auth.currentUser.email
+              ? this.props.navigation.navigate('MyProfile')
+              : this.props.navigation.navigate('UserProfile', { user: this.props.data.owner });
+          }
     render(){
         return(
             <View style={styles.container}>
-                <Text>{this.props.data.owner}</Text>
+                <TouchableOpacity onPress={() => this.irAlPerfil()}>
+                <Text style={styles.ownerText}>{this.props.data.owner}</Text>
+                </TouchableOpacity>
                 <Image style={styles.fotoUrl} source= {{uri: this.props.data.fotoUrl ? this.props.data.fotoUrl: ''}}/>
                 {/* {console.log(this.props.data)} */}
                 <Text>{this.props.data.descripcion}</Text>
