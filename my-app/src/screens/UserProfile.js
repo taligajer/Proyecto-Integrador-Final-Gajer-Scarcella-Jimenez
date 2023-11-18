@@ -8,7 +8,8 @@ export default class UserProfile extends Component {
         super(props)
         this.state = {
             usuarios: [],
-            posts: []
+            posts: [],
+            esUserLogueado: false
 
         }
     }
@@ -27,7 +28,17 @@ export default class UserProfile extends Component {
                 posts: arrDocs
             }, () => console.log(this.state.posts));
         });
-        db.collection('users').where('owner', '==', this.props.route.params.user).onSnapshot((docs) => { //empaqueta todos los documentos que tenga ahi
+        
+        if(auth.currentUser.email == this.props.route.params.email){
+            this.setState({
+              esUserLogueado: true
+            }, ()=>{
+              if(this.state.esUserLogueado){
+                this.props.navigation.navigate('UserProfile')
+              }
+            })
+          }
+            db.collection('users').where('owner', '==', this.props.route.params.user).onSnapshot((docs) => { //empaqueta todos los documentos que tenga ahi
             let arrDocs = []
             docs.forEach((doc) => {
                 arrDocs.push({

@@ -1,4 +1,4 @@
-import {Text, View, TouchableOpacity, StyleSheet, FlatList} from 'react-native'
+import {Text, View, TouchableOpacity, StyleSheet, FlatList, Alert, Modal} from 'react-native'
 import React, {Component} from 'react'
 import {auth, db} from '../firebase/config'
 import Post from '../components/Post'
@@ -8,7 +8,9 @@ export default class MyProfile extends Component {
         super(props)
         this.state = {
             usuario: [],
-            posts: []
+            posts: [],
+            modalVisible: false,
+            postToDelete: null,
 
         }
     }
@@ -48,8 +50,22 @@ export default class MyProfile extends Component {
         this.props.navigation.navigate('Login')
     }
 
-    borrarPost(postId) {
-        db.collection('posts').doc(postId).delete();
+    borrarPost(item) {
+        db.collection('posts').doc(item.id).delete()
+        .then(() => alert('El post se ha eliminado'));
+      }
+
+      confirmarBorrarPost(item) {
+        this.setState({ modalVisible: true, postToDelete: item });
+      }
+      
+      finalBorrarPost() {
+        this.borrarPost(this.state.postToDelete);
+        this.setState({ modalVisible: false, postToDelete: null });
+      }
+      
+      noBorrarPost() {
+        this.setState({ modalVisible: false, postToDelete: null });
       }
 
     render(){
@@ -79,15 +95,34 @@ export default class MyProfile extends Component {
                     keyExtractor={(item)=> item.id.toString()}
                     renderItem={({item})=> ( <> 
                     <Post navigation={this.props.navigation} data={item.data} id={item.id}/>
-                    <TouchableOpacity
-                    style={styles.deleteBtn}
-                    onPress={() => this.borrarPost(item.id)}>
-                    <Text style={styles.btnText}>Borrar post</Text>
-                  </TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.confirmarBorrarPost(item)}>
+                    <Text>Borrar Post</Text>
+                    </TouchableOpacity>
                     </>
                     )}
-                    
-                />
+                    />
+                    <Modal 
+                animationType="slide" 
+                transparent={true}  
+                visible={this.state.modalVisible}>
+                <View style={styles.centeredView}>
+                <View style={styles.modalView}>
+             <Text> ¿Estás seguro de que quieres eliminar este posteo?</Text>
+            
+            <TouchableOpacity
+            onPress={() => this.finalBorrarPost()}
+            >
+            <Text>Aceptar</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              onPress={() => this.noBorrarPost()}
+            >
+              <Text>Cancelar</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
                 <View>
                     <TouchableOpacity
                     style={styles.signOutBtn}
