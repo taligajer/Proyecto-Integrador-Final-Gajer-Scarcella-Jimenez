@@ -34,7 +34,7 @@ export default class Search extends Component {
         let usuariosFiltrados = this.state.backup.filter(
           (elm) => 
           elm.data.name.toLowerCase().includes(name.toLowerCase())
-          || //wtf
+          || 
           elm.data.owner.toLowerCase().includes(name.toLowerCase()) 
 
         );
@@ -60,8 +60,8 @@ export default class Search extends Component {
 
       render() {
         return (
-          <View>
-
+          <View style={styles.container}>
+            <Text style= {styles.titulo}>Search</Text>
             <FormSearch filtrarUsuarios={(nombre) => this.filtrarUsuarios(nombre)} actualizarInput={(valor) => this.actualizarInput(valor)} />
 
             {this.state.valor != '' ? (
@@ -74,7 +74,7 @@ export default class Search extends Component {
                   renderItem={({ item }) =>
                   <View>
                   <TouchableOpacity onPress={() => this.irAlPerfil(item.data.owner)}>
-                    <Text >{item.data.name}</Text>
+                    <Text style={styles.letra}>{item.data.name}</Text>
                     <Text>Email: {item.data.owner}</Text>
                     </TouchableOpacity>
                   
@@ -93,3 +93,16 @@ export default class Search extends Component {
         );
       }
     }    
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        backgroundColor: 'pink'
+      },
+      titulo:{
+        marginBottom:10,
+        textAlign:'center',
+        fontSize: 20
+    },
+  })

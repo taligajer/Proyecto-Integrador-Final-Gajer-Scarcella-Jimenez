@@ -17,9 +17,10 @@ export default class FormSearch extends Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.busqueda}>
+        
         <TextInput
-
+        style={styles.input}
           placeholder="Búsqueda"
           name="busqueda"
           onChangeText={(text) => this.controlarCambios(text)}
@@ -32,3 +33,21 @@ export default class FormSearch extends Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  busqueda: {
+    maxWidth: 1000,
+    width: 500,
+    padding: 10,
+    margin: 10,
+    backgroundColor: 'white'
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: 'purple',
+    marginBottom: 24,
+    fontSize: 15,
+    padding: 10
+}
+  
+})

@@ -87,8 +87,8 @@ export default class MyProfile extends Component {
                 
                 :false}
                 <View> 
-                    <Text> Mis posteos </Text>
-                    <Text>Cantidad: {this.state.posts.length}</Text>
+                    <Text style={styles.letra}> Mis posteos </Text>
+                    <Text style={styles.letra}>Cantidad: {this.state.posts.length}</Text>
                     </View>
                  
                 <FlatList
@@ -97,7 +97,7 @@ export default class MyProfile extends Component {
                     renderItem={({item})=> ( <> 
                     <Post navigation={this.props.navigation} data={item.data} id={item.id}/>
                     <TouchableOpacity onPress={() => this.confirmarBorrarPost(item)}>
-                    <Text>Borrar Post</Text>
+                    <Text style={styles.deleteBtn}>Borrar Post</Text>
                     </TouchableOpacity>
                     </>
                     )}
@@ -107,19 +107,19 @@ export default class MyProfile extends Component {
                 transparent={true}  
                 visible={this.state.modalVisible}>
                 <View style={styles.centeredView}>
-                <View style={styles.modalView}>
+                <View >
              <Text> ¿Estás seguro de que quieres eliminar este posteo?</Text>
             
             <TouchableOpacity
             onPress={() => this.finalBorrarPost()}
             >
-            <Text>Aceptar</Text>
+            <Text style={styles.btn}>Aceptar</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
               onPress={() => this.noBorrarPost()}
             >
-              <Text>Cancelar</Text>
+              <Text style={styles.btn}>Cancelar</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -157,5 +157,17 @@ const styles = StyleSheet.create({
         padding: 20,
         borderRadius: 10,
         marginBottom: 10,
-      }
+        color: 'white'
+      },
+      centeredView:{
+        width: 500,
+        backgroundColor: 'white',
+        alignItems: 'center'
+      },
+    btn:{
+        maxWidth: 200,
+        backgroundColor: 'pink',
+        padding: 16,
+        margin: 10
+    }
 })

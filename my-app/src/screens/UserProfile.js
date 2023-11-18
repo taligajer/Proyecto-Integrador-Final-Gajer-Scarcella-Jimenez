@@ -50,10 +50,10 @@ export default class UserProfile extends Component {
                         data={this.state.usuarios}
                         keyExtractor={(item) => item.id.toString()}
                         renderItem={({ item }) => <View>
-                            <Text>Usuario: {item.data.name}</Text>
-                            <Text>Email: {item.data.owner}</Text>
+                            <Text style={styles.letra}>Usuario: {item.data.name}</Text>
+                            <Text style={styles.letra}>Email: {item.data.owner}</Text>
                             {item.data.minibio ?
-                                <Text>Minibio: {item.data.minibio}</Text>
+                                <Text style={styles.letra}>Minibio: {item.data.minibio}</Text>
                                 :
                                 ''
                             }
@@ -61,8 +61,8 @@ export default class UserProfile extends Component {
                         }
                     />
                 </View>
-                <Text>Posteos</Text>
-                <Text>Cantidad: {this.state.posts.length}</Text>
+                <Text style={styles.letra}>Posteos</Text>
+                <Text style={styles.letra}>Cantidad: {this.state.posts.length}</Text>
                 <FlatList
                     data={this.state.posts}
                     keyExtractor={(item)=> item.id.toString()}
