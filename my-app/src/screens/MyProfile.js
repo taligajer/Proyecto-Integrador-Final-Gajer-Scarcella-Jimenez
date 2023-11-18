@@ -1,4 +1,4 @@
-import {Text, View, TouchableOpacity, StyleSheet, FlatList, Alert, Modal} from 'react-native'
+import {Text, View, TouchableOpacity, StyleSheet, FlatList, Alert, Modal, Image} from 'react-native'
 import React, {Component} from 'react'
 import {auth, db} from '../firebase/config'
 import Post from '../components/Post'
@@ -82,7 +82,11 @@ export default class MyProfile extends Component {
                     <View>
                         <Text style={styles.letra}> minibio: {this.state.usuario[0].data.minibio}</Text>
                     </View>
-                    
+                {this.state.usuario[0].data.fotoDePerfil == ''?
+                ''
+                :
+                <Image source={{ uri: this.state.usuario[0].data.fotoDePerfil }} style={styles.imagen}/>
+                } 
                 </View>
                 
                 :false}
@@ -169,5 +173,9 @@ const styles = StyleSheet.create({
         backgroundColor: 'pink',
         padding: 16,
         margin: 10
-    }
+    },
+    imagen: {
+        height: 300,
+        width: 300,
+      }
 })

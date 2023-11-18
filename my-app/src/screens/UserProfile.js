@@ -1,4 +1,4 @@
-import {Text, View, TouchableOpacity, StyleSheet, FlatList} from 'react-native'
+import {Text, View, TouchableOpacity, StyleSheet, FlatList, Image} from 'react-native'
 import React, {Component} from 'react'
 import {auth, db} from '../firebase/config'
 import Post from '../components/Post'
@@ -57,9 +57,16 @@ export default class UserProfile extends Component {
                                 :
                                 ''
                             }
+                            {item.data.fotoDePerfil == '' ?
+                            ''
+                            :
+                            <Image source={{ uri: item.data.fotoDePerfil }} style={styles.imagen} />
+                            }
+                            
                         </View>
                         }
                     />
+
                 </View>
                 <Text style={styles.letra}>Posteos</Text>
                 <Text style={styles.letra}>Cantidad: {this.state.posts.length}</Text>
@@ -83,5 +90,9 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 20,
         fontWeight: 'bold'
-    }
+    },
+    imagen: {
+        height: 300,
+        width: 300,
+      }
 })
