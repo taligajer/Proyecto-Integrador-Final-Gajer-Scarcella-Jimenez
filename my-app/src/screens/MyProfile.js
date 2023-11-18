@@ -88,6 +88,7 @@ export default class MyProfile extends Component {
                 :false}
                 <View> 
                     <Text> Mis posteos </Text>
+                    <Text>Cantidad: {this.state.posts.length}</Text>
                     </View>
                  
                 <FlatList

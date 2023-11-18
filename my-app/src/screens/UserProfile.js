@@ -23,7 +23,7 @@ export default class UserProfile extends Component {
             });
             console.log(arrDocs);
             this.setState({
-                usuario: arrDocs
+                usuarios: arrDocs
             });
         });
         db.collection('posts').where('owner', '==', this.props.route.params.user).onSnapshot((docs) => { //empaqueta todos los documentos que tenga ahi
