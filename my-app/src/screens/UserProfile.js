@@ -9,12 +9,23 @@ export default class UserProfile extends Component {
         this.state = {
             usuarios: [],
             posts: [],
-            esUserLogueado: false
-
         }
     }
 
     componentDidMount(){
+        db.collection('users').where('owner', '==', this.props.route.params.user).onSnapshot((docs) => { //empaqueta todos los documentos que tenga ahi
+            let arrDocs = []
+            docs.forEach((doc) => {
+                arrDocs.push({
+                    id: doc.id,
+                    data: doc.data()
+                })
+            });
+            console.log(arrDocs);
+            this.setState({
+                usuario: arrDocs
+            });
+        });
         db.collection('posts').where('owner', '==', this.props.route.params.user).onSnapshot((docs) => { //empaqueta todos los documentos que tenga ahi
             let arrDocs = []
             docs.forEach((doc) => {
@@ -27,29 +38,6 @@ export default class UserProfile extends Component {
             this.setState({
                 posts: arrDocs
             }, () => console.log(this.state.posts));
-        });
-        
-        if(auth.currentUser.email == this.props.route.params.email){
-            this.setState({
-              esUserLogueado: true
-            }, ()=>{
-              if(this.state.esUserLogueado){
-                this.props.navigation.navigate('UserProfile')
-              }
-            })
-          }
-            db.collection('users').where('owner', '==', this.props.route.params.user).onSnapshot((docs) => { //empaqueta todos los documentos que tenga ahi
-            let arrDocs = []
-            docs.forEach((doc) => {
-                arrDocs.push({
-                    id: doc.id,
-                    data: doc.data()
-                })
-            });
-            console.log(arrDocs);
-            this.setState({
-                usuario: arrDocs
-            });
         });
     }
     
@@ -73,7 +61,8 @@ export default class UserProfile extends Component {
                         }
                     />
                 </View>
-                
+                <Text>Posteos</Text>
+                <Text>Cantidad: {this.state.posts.length}</Text>
                 <FlatList
                     data={this.state.posts}
                     keyExtractor={(item)=> item.id.toString()}

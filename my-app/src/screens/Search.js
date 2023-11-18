@@ -70,19 +70,19 @@ export default class Search extends Component {
 
                 <FlatList
                   data={this.state.usuarios}
+                  keyExtractor={(item) => item.id.toString()}
                   renderItem={({ item }) =>
-
-                    <View>
-
-                      <TouchableOpacity onPress={() => this.irAlPerfil(item.data.owner)}>
-                        <Text >{item.data.name}</Text>
-                        <Text >{item.data.owner}</Text>
-                      </TouchableOpacity>
+                  <View>
+                  <TouchableOpacity onPress={() => this.irAlPerfil(item.data.owner)}>
+                    <Text >{item.data.name}</Text>
+                    <Text>Email: {item.data.owner}</Text>
+                    </TouchableOpacity>
+                  
 
                     </View>
                 }
 
-                  keyExtractor={(item) => item.id.toString()}
+                  
                 />
                 :
                 <Text>No se han encontrado resultados</Text>
