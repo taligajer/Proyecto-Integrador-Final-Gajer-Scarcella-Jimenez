@@ -81,8 +81,8 @@ export default class MyProfile extends Component {
                     <Post navigation={this.props.navigation} data={item.data} id={item.id}/>
                     <TouchableOpacity
                     style={styles.deleteBtn}
-                    onPress={() => this.borrarPosteo(item.id)}>
-                    <Text style={styles.btnText}>Borrar posteo</Text>
+                    onPress={() => this.borrarPost(item.id)}>
+                    <Text style={styles.btnText}>Borrar post</Text>
                   </TouchableOpacity>
                     </>
                     )}
@@ -117,8 +117,8 @@ const styles = StyleSheet.create({
         padding: 16
     },
     deleteBtn: {
-        backgroundColor: 'lightcoral',
-        padding: 10,
+        backgroundColor: 'purple',
+        padding: 20,
         borderRadius: 10,
         marginBottom: 10,
       }
