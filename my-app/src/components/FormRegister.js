@@ -128,13 +128,13 @@ export default class FormRegister extends Component {
                         Logueate aca!
                         </TouchableOpacity>
                     </Text>
-
+                    {this.state.email == '' || this.state.name == '' || this.state.password == '' ? '' :
                     <TouchableOpacity 
                     onPress={() => this.registrarUsuario(this.state.name, this.state.email, this.state.password)}
                     style= {styles.btn}>
                         <Text style= {styles.textBn}> Registrame </Text>
                     </TouchableOpacity>
-
+                    }
                 </View>
                 : 
                 <View>
