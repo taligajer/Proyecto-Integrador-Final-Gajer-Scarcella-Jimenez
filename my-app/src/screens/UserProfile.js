@@ -45,15 +45,15 @@ export default class UserProfile extends Component {
     render(){
         return(
             <View style={styles.containerGral}>
-                <View>
+                <View style={styles.perfilInfoContainer}>
                     <FlatList
                         data={this.state.usuarios}
                         keyExtractor={(item) => item.id.toString()}
                         renderItem={({ item }) => <View>
-                            <Text style={styles.letra}>Usuario: {item.data.name}</Text>
-                            <Text style={styles.letra}>Email: {item.data.owner}</Text>
+                            <Text style={styles.perfilInfoText}>Usuario: {item.data.name}</Text>
+                            <Text style={styles.perfilInfoTextMail}>Email: {item.data.owner}</Text>
                             {item.data.minibio ?
-                                <Text style={styles.letra}>Minibio: {item.data.minibio}</Text>
+                                <Text style={styles.minibioText}>Minibio: {item.data.minibio}</Text>
                                 :
                                 ''
                             }
@@ -64,17 +64,23 @@ export default class UserProfile extends Component {
                             }
                             
                         </View>
+                       
                         }
+                        
                     />
 
                 </View>
-                <Text style={styles.letra}>Posteos</Text>
-                <Text style={styles.letra}>Cantidad: {this.state.posts.length}</Text>
+               <View style={styles.misPosteosContainer}>
+                <Text style={styles.perfilInfoText}>Posteos</Text>
+                <Text style={styles.minibioText} >Cantidad: {this.state.posts.length}</Text>
+                </View>
                 <FlatList
                     data={this.state.posts}
                     keyExtractor={(item)=> item.id.toString()}
                     renderItem={({item})=> <Post navigation={this.props.navigation} data={item.data} id={item.id}/>}
+                    contentContainerStyle={styles.flatlistContent}
                 />
+              
             </View>
         )
     }
@@ -86,13 +92,52 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#ECECE3'
     },
-    letra:{
-        color: 'white',
-        fontSize: 20,
-        fontWeight: 'bold'
-    },
     imagen: {
-        height: 300,
-        width: 300,
-      }
+        height: 150,
+        width: 150,
+        borderRadius: 75,
+        marginBottom: 20,
+      },
+      perfilInfoContainer: {
+        width: '10',
+        paddingVertical: 20,
+        paddingHorizontal: 20,
+        borderRadius: 15,
+        marginBottom: 20,
+        alignItems: 'center',
+        shadowColor: 'rgba(0, 0, 0, 0.1)',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.8,
+        shadowRadius: 5,
+        elevation: 5,
+      },
+      perfilInfoText: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        color: '#333333',
+        marginBottom: 10,
+        textAlign: 'center',
+      },
+      perfilInfoTextMail: {
+        fontSize: 10,
+        fontWeight: 'bold',
+        color: '#333333',
+        marginBottom: 10,
+        textAlign: 'center',
+      },
+      minibioText: {
+        fontSize: 16,
+        color: '#666666',
+        textAlign: 'center',
+        marginBottom: 10,
+      },
+      flatlistContent: {
+        paddingBottom: 100, 
+        paddingTop: 20,
+      },
+      misPosteosContainer: {
+        width: '100%',
+        marginBottom: 20,
+      },
+
 })
