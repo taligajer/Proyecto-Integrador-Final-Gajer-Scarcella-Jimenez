@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import {auth, db} from '../firebase/config';
 import { TextInput, View, Text, TouchableOpacity, StyleSheet, ScrollView} from 'react-native'
 import MyImage from './MyImage';
-import AgregarFoto from '../screens/AgregarFoto';
 
 export default class FormRegister extends Component {
     constructor(props){
@@ -137,7 +136,7 @@ export default class FormRegister extends Component {
                     </TouchableOpacity>
                     }
                 </View>: 
-                <MyImage actualizarEstadoFotoDePerfil={(url)=> this.actualizarEstadoFotoDePerfil(url)} />
+                <MyImage actualizarEstadoFotoDePerfil={(url)=> this.actualizarEstadoFotoDePerfil(url)}navigation={this.props.navigation}/>
                 //<AgregarFoto navigation={this.props.navigation}/>
             }  
                 

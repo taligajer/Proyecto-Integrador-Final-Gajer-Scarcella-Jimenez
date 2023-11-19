@@ -69,9 +69,12 @@ export default class MyImage extends Component {
             </TouchableOpacity>
             </>
     }
-          {
-            //<ImagePicker/>
-            }
+    <TouchableOpacity
+        style={styles.btn}
+        onPress={()=> this.props.navigation.navigate('TabNavigation')}
+        >
+            <Text>Omitir este paso</Text>
+    </TouchableOpacity>
     </View>
          
     )
