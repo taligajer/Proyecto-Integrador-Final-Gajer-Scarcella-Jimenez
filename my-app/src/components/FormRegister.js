@@ -120,17 +120,17 @@ export default class FormRegister extends Component {
                     />
             {
             this.state.name && this.state.email && this.state.password && this.state.email.includes('@') && this.state.email.includes('.com') && this.state.password.length >= 6 ? 
-                
+
                 ''
             : 
             this.state.email.includes('@') === false || this.state.email.includes('.com') === false ? (
             
-                <Text>El email debe contener '@' y '.com'.</Text>
+                <Text>El email debe contener '@' y '.com'</Text>
             ) : 
                 '' }
             { this.state.password.length < 6 ? (
 
-                <Text>La contraseña debe tener mas de 5 caracteres.</Text>
+                <Text>La contraseña debe tener 6 o mas caracteres.</Text>
             ) 
             : ''
             }
