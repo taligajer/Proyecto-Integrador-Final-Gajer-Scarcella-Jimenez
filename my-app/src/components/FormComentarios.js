@@ -34,6 +34,7 @@ render() {
             numberOfLines={4}
             style={styles.input}
         />
+        {this.state.comentario == '' ? '' :
         <TouchableOpacity //agregar icono para que quede mas pro
             onPress={()=> this.enviarComentario(this.state.comentario)}
         >
@@ -41,6 +42,7 @@ render() {
                 Enviar
             </Text>
         </TouchableOpacity>
+        }
       </View>
     )
   }

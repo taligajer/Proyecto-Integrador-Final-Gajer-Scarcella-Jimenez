@@ -77,7 +77,7 @@ export default class MyProfile extends Component {
                         <Text style={styles.letra}> {this.state.usuario[0].data.owner}</Text>
                     </View>
                     <View>
-                        <Text style={styles.letra}> @{this.state.usuario[0].data.name}</Text>
+                        <Text style={styles.letra}> {this.state.usuario[0].data.name}</Text>
                     </View>
                     <View>
                         <Text style={styles.letra}> minibio: {this.state.usuario[0].data.minibio}</Text>
@@ -92,7 +92,7 @@ export default class MyProfile extends Component {
                 :false}
                 <View> 
                     <Text style={styles.letra}> Mis posteos </Text>
-                    <Text style={styles.letra}>Cantidad: {this.state.posts.length}</Text>
+                    <Text style={styles.letra}>Cantidad de posteos: {this.state.posts.length}</Text>
                     </View>
                  
                 <FlatList
