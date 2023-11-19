@@ -98,6 +98,7 @@ export default class MyProfile extends Component {
                     </View>
                  
                 <FlatList
+                    style={styles.misPosteosContainer2}
                     data={this.state.posts}
                     keyExtractor={(item)=> item.id.toString()}
                     renderItem={({item})=> ( <> 
@@ -222,6 +223,10 @@ const styles = StyleSheet.create({
       },
       misPosteosContainer: {
         width: '100%',
+        marginBottom: 20,
+      },
+      misPosteosContainer2: {
+        width: '60%',
         marginBottom: 20,
       },
 })

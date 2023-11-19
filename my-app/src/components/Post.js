@@ -72,21 +72,21 @@ export default class Post extends Component {
                     <Text>{this.props.data.likes.length} likes </Text>
                     {
                         this.state.estaMiLike ?
-                    <TouchableOpacity onPress={()=> this.unlike()}>
+                    <TouchableOpacity onPress={()=> this.unlike()} style={styles.icono}>
                     <FontAwesome name='heart' color='red' size={25}/>
                     </TouchableOpacity>
                     :
-                    <TouchableOpacity onPress={()=> this.like()}>
+                    <TouchableOpacity onPress={()=> this.like()} style={styles.icono}>
                     <FontAwesome name='heart-o' color='red' size={25}/>
                     </TouchableOpacity>
                     }
                 </View>
-                <View>
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                 <Text>{this.props.data.comentarios.length} comentarios </Text>
                     <TouchableOpacity
                     onPress ={()=> this.irAComentar()}
                     >
-                       <FontAwesome name='comment-o' size={25}/>
+                       <FontAwesome name='comment-o' size={15} style={styles.icono}/>
                     </TouchableOpacity>
                 </View>
                 
@@ -97,31 +97,45 @@ export default class Post extends Component {
 
 const styles = StyleSheet.create({
     fotoUrl:{
-        height:400,
-        width:400,
-        border: '2px solid #ddd',
-        padding: 5,
-        borderRadius:4,
-        alignItems: 'center',
-        margin: '10px' 
+        height: 400,
+        width: '100%', 
+        overflow: 'hidden', 
+        marginBottom: 10,
     },
     container:{
-        flex:1,
-        alignContent: 'centrer',
-        backgroundColor:'white',
-        margin: '30px'
+        backgroundColor: 'white',
+        margin: 10,
+        borderRadius: 10,
+        overflow: 'hidden', 
+        elevation: 3, 
+        shadowOffset: {
+          width: 0,
+          height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
     },
     containerChico:{
-        flex:1
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        padding: 10,
+        borderBottomWidth: 1,
+        borderBottomColor: '#ddd',
     },
 
     nombreUsuario:{
-        fontFamily: "DM Sans",
-        color: "#002454",
-        fontSize: 15
+        fontFamily: 'DM Sans',
+        color: '#002454',
+        fontSize: 15,
+        fontWeight: 'bold',
+        padding: 10,
     },
     descripcionPost:{
         fontFamily: "DM Sans",
-        fontSize: 20 
+        fontSize: 20 ,
+        padding: 10,
+    },
+    icono: {
+        marginRight: 10,
     }
 })
