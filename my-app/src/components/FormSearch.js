@@ -21,11 +21,12 @@ export default class FormSearch extends Component {
         
         <TextInput
         style={styles.input}
-          placeholder="Búsqueda"
+          placeholder="@..."
           name="busqueda"
           onChangeText={(text) => this.controlarCambios(text)}
         />
         <Button
+          style={styles.botonBuscar}
           title="Buscar"
           onPress={(evento) => this.evitarSubmit(evento)}
         />
@@ -40,14 +41,30 @@ const styles = StyleSheet.create({
     width: 500,
     padding: 10,
     margin: 10,
-    backgroundColor: 'white'
+    borderColor:  "#002454",
   },
   input: {
-    borderWidth: 1,
-    borderColor: 'purple',
+    borderWidth: 10,
+    borderColor:  "#002454",
     marginBottom: 24,
     fontSize: 15,
-    padding: 10
+    padding: 10,
+    height: 40,
+    borderRadius: 5,
+    paddingLeft: 10,
+    
+},
+ botonBuscar: {
+    borderWidth: 10,
+    borderColor:  "#002454",
+    marginBottom: 24,
+    fontSize: 15,
+    padding: 10,
+    height: 40,
+    borderRadius: 5,
+    paddingLeft: 10,
+    backgroundColor: "#002454"
+
 }
   
 })

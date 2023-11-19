@@ -72,15 +72,16 @@ export default class MyProfile extends Component {
         return(
             <View style={styles.containerGral}>
                 {this.state.usuario.length > 0?
+                 <View style={styles.perfilInfoContainer}>
                 <View>
                     <View>
-                        <Text style={styles.letra}> {this.state.usuario[0].data.owner}</Text>
+                        <Text style={styles.perfilInfoTextMail}> {this.state.usuario[0].data.owner}</Text>
                     </View>
                     <View>
-                        <Text style={styles.letra}> {this.state.usuario[0].data.name}</Text>
+                        <Text style={styles.perfilInfoText}> {this.state.usuario[0].data.name}</Text>
                     </View>
                     <View>
-                        <Text style={styles.letra}> minibio: {this.state.usuario[0].data.minibio}</Text>
+                        <Text style={styles.minibioText}> minibio: {this.state.usuario[0].data.minibio}</Text>
                     </View>
                 {this.state.usuario[0].data.fotoDePerfil == ''?
                 ''
@@ -88,11 +89,12 @@ export default class MyProfile extends Component {
                 <Image source={{ uri: this.state.usuario[0].data.fotoDePerfil }} style={styles.imagen}/>
                 } 
                 </View>
+                </View>
                 
                 :false}
-                <View> 
-                    <Text style={styles.letra}> Mis posteos </Text>
-                    <Text style={styles.letra}>Cantidad de posteos: {this.state.posts.length}</Text>
+                <View style={styles.misPosteosContainer}>
+                    <Text style={styles.perfilInfoText}> Mis posteos </Text>
+                    <Text style={styles.minibioText}>Cantidad de posteos: {this.state.posts.length}</Text>
                     </View>
                  
                 <FlatList
@@ -105,6 +107,7 @@ export default class MyProfile extends Component {
                     </TouchableOpacity>
                     </>
                     )}
+                    contentContainerStyle={styles.flatlistContent}
                     />
                     <Modal 
                 animationType="slide" 
@@ -145,37 +148,80 @@ const styles = StyleSheet.create({
     containerGral:{
         flex:1,
         alignItems: 'center',
-        backgroundColor: '#ECECE3'
+        backgroundColor: '#ECECE3',
+        paddingTop: 20,
     },
-    letra:{
-        color: 'white',
-        fontSize: 20,
-        fontWeight: 'bold'
-    },
+    flatlistContent: {
+        paddingBottom: 100, 
+        paddingTop: 20,
+      },
+    perfilInfoContainer: {
+        width: '10',
+        paddingVertical: 20,
+        paddingHorizontal: 20,
+        borderRadius: 15,
+        marginBottom: 20,
+        alignItems: 'center',
+        shadowColor: 'rgba(0, 0, 0, 0.1)',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.8,
+        shadowRadius: 5,
+        elevation: 5,
+      },
+      perfilInfoText: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        color: '#333333',
+        marginBottom: 10,
+        textAlign: 'center',
+      },
+      perfilInfoTextMail: {
+        fontSize: 10,
+        fontWeight: 'bold',
+        color: '#333333',
+        marginBottom: 10,
+        textAlign: 'center',
+      },
+      minibioText: {
+        fontSize: 16,
+        color: '#666666',
+        textAlign: 'center',
+        marginBottom: 10,
+      },
     cerrar: {
         backgroundColor: 'grey',
-        padding: 5
+        padding: 10, 
+        borderRadius: 8, 
+        marginTop: 20, 
     },
     borrarPost: {
         backgroundColor: "#002454",
-        padding: 30,
-        borderRadius: 30,
+        padding: 16,
+        borderRadius: 8,
         marginBottom: 10,
-        color: '#ECECE3'
+        color: '#ECECE3',
+        textAlign: 'center',
       },
       view:{
         width: 500,
         backgroundColor: 'white',
-        alignItems: 'center'
+        alignItems: 'center',
+        paddingTop: 20,
       },
     btn:{
         maxWidth: 200,
-        backgroundColor: 'pink',
+        backgroundColor: "#002454",
         padding: 16,
         margin: 10
     },
     imagen: {
-        height: 300,
-        width: 300,
-      }
+        height: 150,
+        width: 150,
+        borderRadius: 75,
+        marginBottom: 20,
+      },
+      misPosteosContainer: {
+        width: '100%',
+        marginBottom: 20,
+      },
 })
