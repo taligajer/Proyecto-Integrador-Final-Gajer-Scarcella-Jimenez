@@ -101,7 +101,7 @@ export default class MyProfile extends Component {
                     renderItem={({item})=> ( <> 
                     <Post navigation={this.props.navigation} data={item.data} id={item.id}/>
                     <TouchableOpacity onPress={() => this.confirmarBorrarPost(item)}>
-                    <Text style={styles.deleteBtn}>Borrar Post</Text>
+                    <Text style={styles.borrarPost}>Borrar Post</Text>
                     </TouchableOpacity>
                     </>
                     )}
@@ -130,7 +130,7 @@ export default class MyProfile extends Component {
       </Modal>
                 <View>
                     <TouchableOpacity
-                    style={styles.signOutBtn}
+                    style={styles.cerrar}
                     onPress={() => this.logout()}
                     >
                         <Text>Cerrar sesion</Text>
@@ -152,16 +152,16 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold'
     },
-    signOutBtn: {
-        backgroundColor: 'red',
-        padding: 16
+    cerrar: {
+        backgroundColor: 'grey',
+        padding: 5
     },
-    deleteBtn: {
-        backgroundColor: 'purple',
-        padding: 20,
-        borderRadius: 10,
+    borrarPost: {
+        backgroundColor: "#002454",
+        padding: 30,
+        borderRadius: 30,
         marginBottom: 10,
-        color: 'white'
+        color: '#ECECE3'
       },
       view:{
         width: 500,

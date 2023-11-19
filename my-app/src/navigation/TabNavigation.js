@@ -16,7 +16,7 @@ export default function TabNavigaton(){
             component={Home}
             options={{
                 headerShown: false,
-                tabBarIcon: ()=> <FontAwesome5 name='home' size={20} color='pink' />
+                tabBarIcon: ()=> <FontAwesome5 name='home' size={20} color="#002454" />
                 
             }}
             />
@@ -25,7 +25,7 @@ export default function TabNavigaton(){
             component={Profile}
             options={{
                 headerShown: false,
-                tabBarIcon: () => <FontAwesome5 name='user' size={20} color='pink' />
+                tabBarIcon: () => <FontAwesome5 name='user' size={20} color= "#002454" />
 
             }}
             />
@@ -34,7 +34,7 @@ export default function TabNavigaton(){
             component={Search}
             options={{
                 headerShown: false,
-                tabBarIcon: () => <FontAwesome5 name='search' size={20} color='pink' />
+                tabBarIcon: () => <FontAwesome5 name='search' size={20} color="#002454" />
             }}
             />
             <Tab.Screen
@@ -42,7 +42,7 @@ export default function TabNavigaton(){
             component={NewPost}
             options={{
                 headerShown: false,
-                tabBarIcon: () => <FontAwesome5 name='camera' size={20} color='pink' />
+                tabBarIcon: () => <FontAwesome5 name='camera' size={20} color="#002454" />
             }}
             />
         </Tab.Navigator>

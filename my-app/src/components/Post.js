@@ -63,11 +63,11 @@ export default class Post extends Component {
         return(
             <View style={styles.container}>
                 <TouchableOpacity onPress={() => this.irAlPerfil()}>
-                <Text style={styles.ownerText}>{this.props.data.owner}</Text>
+                <Text style={styles.nombreUsuario}>{this.props.data.owner}</Text>
                 </TouchableOpacity>
                 <Image style={styles.fotoUrl} source= {{uri: this.props.data.fotoUrl ? this.props.data.fotoUrl: ''}}/>
                 {/* {console.log(this.props.data)} */}
-                <Text>{this.props.data.descripcion}</Text>
+                <Text style = {styles.descripcionPost}>{this.props.data.descripcion}</Text>
                 <View style={styles.containerChico}>
                     <Text>{this.props.data.likes.length} likes </Text>
                     {
@@ -113,6 +113,15 @@ const styles = StyleSheet.create({
     },
     containerChico:{
         flex:1
+    },
+
+    nombreUsuario:{
+        fontFamily: "DM Sans",
+        color: "#002454",
+        fontSize: 15
+    },
+    descripcionPost:{
+        fontFamily: "DM Sans",
+        fontSize: 20 
     }
-    
 })

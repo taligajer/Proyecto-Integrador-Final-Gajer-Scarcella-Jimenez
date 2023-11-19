@@ -69,7 +69,7 @@ export default class CamaraPost extends Component {
         <TouchableOpacity
         onPress={() => this.tomarFoto()}
         >
-            <Text> Tomar foto</Text>
+            <Text style = {styles.textoBoton}> Tomar foto</Text>
         </TouchableOpacity>
         </>
 
@@ -81,18 +81,20 @@ export default class CamaraPost extends Component {
             style = {styles.img}
             reasizeMode={'contain'}
         />
+        <View style={styles.contenedorBotones}>
         <TouchableOpacity
         onPress={() => this.aceptarFoto()}
         >
-            <Text> Aceptar foto </Text>
+            <Text style={styles.textoBoton}> Aceptar foto </Text>
 
         </TouchableOpacity>
         <TouchableOpacity
         onPress={() => this.rechazarFoto()}
         >
-            <Text> Rechazar Foto </Text>
+            <Text style={styles.textoBoton}> Rechazar Foto </Text>
 
         </TouchableOpacity>
+        </View>
         </>
         :
         <Text> No tienes permisos para usar la camara </Text>
@@ -106,13 +108,36 @@ export default class CamaraPost extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#ECECE3'
     },
     camara: {
         height: 300,
+        width: 500,
+        borderRadius: 60,
+        overflow: 'hidden',
 
     },
+    contenedorBotones: {
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+      },
+    textoBoton: {
+        color: 'white',
+        fontSize: 16,
+        fontWeight: 'bold',
+        backgroundColor: "#002454",
+        borderRadius: 5,
+        padding: 15,
+        alignItems: 'center',
+        margin: 40,
+
+      },
     img: {
-        height: 300
+        height: 300,
+        width: 200,
+        borderRadius: 10,
     }
 })
