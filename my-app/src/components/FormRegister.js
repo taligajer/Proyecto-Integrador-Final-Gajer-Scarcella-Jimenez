@@ -69,13 +69,14 @@ export default class FormRegister extends Component {
     render(){
         return (
             <View style={styles.container}>
+                <View style={styles.formContainer}>
                 <Text style= {styles.titulo}>Registrate a mi App</Text>
                 {
                     this.state.step1 ?
                     <View>
                     {
                         this.state.errorName ?
-                        <Text>Ingresa un nombre valido</Text>
+                        <Text style={styles.errorText}>Ingresa un nombre valido</Text>
                         : ''
                     }
                     <TextInput
@@ -87,7 +88,7 @@ export default class FormRegister extends Component {
                     />
                     {
                         this.state.errorEmail ?
-                        <Text>Ingresa un email valido</Text>
+                        <Text style={styles.errorText} >Ingresa un email valido</Text>
                         : ''
 
                     }
@@ -107,7 +108,7 @@ export default class FormRegister extends Component {
                     />
                     {
                         this.state.errorPass ?
-                        <Text>Ingresa una contraseña valida</Text>
+                        <Text style={styles.errorText}>Ingresa una contraseña valida</Text>
                         : ''
                     }
                     <TextInput
@@ -125,12 +126,12 @@ export default class FormRegister extends Component {
             : 
             this.state.email.includes('@') === false || this.state.email.includes('.com') === false ? (
             
-                <Text>El email debe contener '@' y '.com'</Text>
+                <Text style={styles.errorText}>El email debe contener '@' y '.com'</Text>
             ) : 
                 '' }
             { this.state.password.length < 6 ? (
 
-                <Text>La contraseña debe tener 6 o mas caracteres.</Text>
+                <Text style={styles.errorText}>La contraseña debe tener 6 o mas caracteres.</Text>
             ) 
             : ''
             }
@@ -141,7 +142,7 @@ export default class FormRegister extends Component {
                         <TouchableOpacity 
                         onPress={() => this.props.navigation.navigate('Login')}
                         >
-                        Logueate aca!
+                       <Text style={styles.link}> Loguéate aquí!</Text>
                         </TouchableOpacity>
                     </Text>
                     {this.state.email == '' || this.state.name == '' || this.state.password == '' ? '' :
@@ -157,6 +158,7 @@ export default class FormRegister extends Component {
             }  
                 
             </View>
+            </View>
         
         
         ) }
@@ -164,39 +166,58 @@ export default class FormRegister extends Component {
 }
 
 const styles = StyleSheet.create({
-    containergral:{
-        flex:1,
+
+    container:{
+        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        padding: 10
-    },
-    container:{
-        width: 500,
-        maxWidth: 1000,
-        flex: 1,
         padding: 10,
     },
-    titulo:{
-        marginBottom:10,
-        textAlign:'center',
-        fontSize: 20
-    },
-    input: {
+    formContainer: {
+        width: '80%',
+        maxWidth: 400,
+        padding: 20,
+        backgroundColor: '#fff',
+        borderRadius: 10,
+        elevation: 3,
+      },
+      titulo: {
+        marginBottom: 20,
+        textAlign: 'center',
+        fontSize: 24,
+        fontWeight: 'bold',
+      },
+      input: {
         borderWidth: 1,
-        borderColor: 'green',
-        marginBottom: 24,
-        fontSize: 15,
-        padding: 10
-
-    },
-    btn: {
-        backgroundColor: 'purple',
+        borderColor: '#ddd',
+        borderRadius: 8,
+        marginBottom: 16,
+        fontSize: 16,
+        padding: 12,
+      },
+      btn: {
+        backgroundColor: "#002454",
         padding: 16,
         alignItems: 'center',
-        marginBottom: 24
-    },
-    textBn: {
+        borderRadius: 8,
+        marginBottom: 16,
+      },
+      textBn: {
         color: 'white',
-        fontSize: 15
-    }
+        fontSize: 16,
+        fontWeight: 'bold',
+      },
+      errorText: {
+        color: 'red',
+        marginBottom: 16,
+        fontSize: 14,
+      },
+      textlink: {
+        marginTop: 16,
+        fontSize: 16,
+      },
+      link: {
+        color:  "#002454",
+        fontWeight: 'bold',
+      },
 })
