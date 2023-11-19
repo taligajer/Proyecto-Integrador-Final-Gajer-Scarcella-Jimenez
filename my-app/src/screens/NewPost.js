@@ -44,7 +44,7 @@ export default class NewPost extends Component {
     render(){
         return(
             <View style = {styles.container} >
-            <Text>
+            <Text style={styles.sectionTitle}>
                 New Post
             </Text>
             {
@@ -58,15 +58,18 @@ export default class NewPost extends Component {
                 onSubmit={(obj) => this.onSubmit(obj)} 
                 actualizarDescripcion={(descripcion) => this.actualizarDescripcion(descripcion)}
                 estadoDescripcion = {this.state.descripcion}
+                style={styles.formContainer}
             />
 
             <TouchableOpacity
                 onPress={() => this.onSubmit({ 
                     descripcion: this.state.descripcion,
                     fotoUrl: this.state.urlFoto
-                })}
+                })
+            }
+            style={styles.button}
             >
-                <Text>
+                <Text style={styles.buttonText}>
                     Enviar
                 </Text>
             </TouchableOpacity>
@@ -79,6 +82,36 @@ export default class NewPost extends Component {
 
 const styles= StyleSheet.create({
     container: {
-        flex: 1
-    }
+        flex: 1,
+        backgroundColor: 'white',
+        paddingHorizontal: 16,
+        paddingVertical: 20,
+      },
+      sectionTitle: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        marginBottom: 20,
+      },
+      formContainer: {
+        marginBottom: 20,
+      },
+      input: {
+        borderWidth: 1,
+        borderColor: '#ddd',
+        borderRadius: 8,
+        padding: 12,
+        marginBottom: 12,
+        fontSize: 16,
+      },
+      button: {
+        backgroundColor: "#002454" ,
+        padding: 16,
+        borderRadius: 8,
+        alignItems: 'center',
+      },
+      buttonText: {
+        color: 'white',
+        fontSize: 18,
+        fontWeight: 'bold',
+      },
 })

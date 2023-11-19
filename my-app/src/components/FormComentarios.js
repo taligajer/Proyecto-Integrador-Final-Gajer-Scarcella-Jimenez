@@ -50,8 +50,11 @@ render() {
 
 const styles = StyleSheet.create({
     input:{
-        borderWidth:1,
-        borderColor:'red'
+        borderWidth: 1,
+        borderColor: '#ddd',
+        borderRadius: 8,
+        padding: 12,
+        marginBottom: 12,
     }
 })
  

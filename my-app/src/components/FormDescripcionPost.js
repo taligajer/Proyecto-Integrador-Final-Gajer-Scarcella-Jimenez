@@ -35,10 +35,9 @@ export default class FormDescripcionPost extends Component {
 const styles = StyleSheet.create({
     input: {
         borderWidth: 1,
-        borderColor: 'red'
+        borderColor: '#ddd',
+        borderRadius: 8,
+        padding: 12,
+        marginBottom: 12,
     },
-    btn: {
-        borderWidth: 1,
-        borderColor: 'green'
-    }
 })
