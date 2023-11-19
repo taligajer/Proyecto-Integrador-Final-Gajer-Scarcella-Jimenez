@@ -84,7 +84,7 @@ export default class MyProfile extends Component {
                         <Text style={styles.minibioText}> minibio: {this.state.usuario[0].data.minibio}</Text>
                     </View>
                 {this.state.usuario[0].data.fotoDePerfil == ''?
-                ''
+                <Image source={require('../../assets/imagenes/user.png')} style={styles.imagen}  />
                 :
                 <Image source={{ uri: this.state.usuario[0].data.fotoDePerfil }} style={styles.imagen}/>
                 } 
