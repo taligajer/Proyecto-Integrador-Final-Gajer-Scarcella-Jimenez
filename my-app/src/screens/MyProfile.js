@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
     containerGral:{
         flex:1,
         alignItems: 'center',
-        backgroundColor:'pink'
+        backgroundColor: '#ECECE3'
     },
     letra:{
         color: 'white',
