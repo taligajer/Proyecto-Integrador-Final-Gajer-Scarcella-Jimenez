@@ -110,7 +110,7 @@ export default class MyProfile extends Component {
                 animationType="slide" 
                 transparent={true}  
                 visible={this.state.modalVisible}>
-                <View style={styles.centeredView}>
+                <View style={styles.view}>
                 <View >
              <Text> ¿Estás seguro de que quieres eliminar este posteo?</Text>
             
@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         color: 'white'
       },
-      centeredView:{
+      view:{
         width: 500,
         backgroundColor: 'white',
         alignItems: 'center'

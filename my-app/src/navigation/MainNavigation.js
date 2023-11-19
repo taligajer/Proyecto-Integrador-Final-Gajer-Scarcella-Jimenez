@@ -6,6 +6,7 @@ import Login from '../screens/Login';
 import Comments from '../screens/Comments';
 import UserProfile from '../screens/UserProfile';
 import MyProfile from '../screens/MyProfile';
+import AgregarFoto from '../screens/AgregarFoto';
 
 const Stack = createNativeStackNavigator();
 
@@ -46,7 +47,13 @@ export default function MainNavigaton(){
                 name='MyProfile'
                 component={MyProfile}
                 />
-
+                <Stack.Screen
+                name='AgregarFoto'
+                component={AgregarFoto}
+                options={{
+                    headerShown: false
+                  }}
+                />
 
             </Stack.Navigator>
         </NavigationContainer>

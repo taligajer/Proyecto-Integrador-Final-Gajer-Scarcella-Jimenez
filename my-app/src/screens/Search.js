@@ -74,7 +74,7 @@ export default class Search extends Component {
                   renderItem={({ item }) =>
                   <View>
                   <TouchableOpacity onPress={() => this.irAlPerfil(item.data.owner)}>
-                    <Text style={styles.letra}>{item.data.name}</Text>
+                    <Text>{item.data.name}</Text>
                     <Text>Email: {item.data.owner}</Text>
                     </TouchableOpacity>
                   

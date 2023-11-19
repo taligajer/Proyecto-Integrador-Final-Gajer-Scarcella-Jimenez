@@ -42,8 +42,6 @@ export default class MyImage extends Component {
   render() {
     return (
       <View>
-        <Text> Carga una foto para tu perfil </Text>
-        
         {
             this.state.imagenCargada !== '' ?
              <> 
@@ -54,12 +52,12 @@ export default class MyImage extends Component {
                 <TouchableOpacity
                 onPress={() => this.aceptarImagen()}
                 >
-                    <Text> Aceptar imagen </Text>
+                    <Text style={styles.btn}> Aceptar imagen </Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                 onPress={() => this.rechazarImagen()}
                 >
-                    <Text> Rechazar imagen </Text>
+                    <Text style={styles.btn}> Rechazar imagen </Text>
                 </TouchableOpacity>
             </>
             :
@@ -67,7 +65,7 @@ export default class MyImage extends Component {
             <TouchableOpacity
                 onPress={() => this.activarPicker()}
             >
-                <Text>Cargar imagen de libreria</Text>
+                <Text style={styles.btn}>Cargar imagen de libreria</Text>
             </TouchableOpacity>
             </>
     }
@@ -83,6 +81,11 @@ export default class MyImage extends Component {
 const styles = StyleSheet.create({
     img: {
         height: 200,
+    },
+    btn:{
+        backgroundColor:'pink',
+        padding: 10,
+        margin: 10
     }
 
 })

@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {auth, db} from '../firebase/config';
 import { TextInput, View, Text, TouchableOpacity, StyleSheet, ScrollView} from 'react-native'
 import MyImage from './MyImage';
+import AgregarFoto from '../screens/AgregarFoto';
 
 export default class FormRegister extends Component {
     constructor(props){
@@ -43,7 +44,7 @@ export default class FormRegister extends Component {
             step1: false
         }))
         )
-        //.then((resp) => this.props.navigation.navigate('InfoAdicionalUser', {docId: resp.id}))
+        //.then((resp) => this.props.navigation.navigate('AgregarFoto', {docId: resp.id}))
         .catch(error => 
             console.log(error))
     }
@@ -62,7 +63,7 @@ export default class FormRegister extends Component {
             fotoDePerfil: this.state.fotoDePerfil
         })
         .then(resp => {
-            this.props.navigation.navigate('TabNavigation') //VER ESTO
+            this.props.navigation.navigate('TabNavigation') 
         })
     }
 
@@ -135,12 +136,10 @@ export default class FormRegister extends Component {
                         <Text style= {styles.textBn}> Registrame </Text>
                     </TouchableOpacity>
                     }
-                </View>
-                : 
-                <View>
-                    <MyImage actualizarEstadoFotoDePerfil={(url)=> this.actualizarEstadoFotoDePerfil(url)} />
-                </View>
-                } 
+                </View>: 
+                <MyImage actualizarEstadoFotoDePerfil={(url)=> this.actualizarEstadoFotoDePerfil(url)} />
+                //<AgregarFoto navigation={this.props.navigation}/>
+            }  
                 
             </View>
         
