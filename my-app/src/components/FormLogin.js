@@ -40,6 +40,7 @@ export default class FormLogin extends Component {
                         placeholder = 'Pon tu password'
                         keyboardType = 'default'
                         value = {this.state.password}
+                        secureTextEntry = {true}
                         onChangeText = {(text) => this.setState({password:text}) }
                     />
                 </View>
